@@ -1,52 +1,31 @@
-#include "cub3d.h"
+#include "includes/cub3d.h"
 
-int read_cub(char *line, t_cub *s)
+void	init_structure(t_cub *s)
 {
-	while (line[s->index])
-	{
-		if(line[s->index] == 'R')
-		{
-			s->data.resolution = 1;
-			(s->index)++;
-			while(line[s->index] == ' ')
-				s->index++;
-			s->data.resolution_x = ft_atoi(&line[s->index]);
-			while(line[s->index] >= '0' && line[s->index] <= '9')
-				(s->index)++;
-			while(line[s->index] == ' ')
-				s->index++;
-			s->data.resolution_y = ft_atoi(&line[s->index]);
-			while(line[s->index] >= '0' && line[s->index] <= '9')
-				(s->index)++;
-			printf("%d", s->data.resolution_x);
-			printf("%d", s->data.resolution_y);
-		}
-		(s->index)++;
-	}
-	return (0);
+	s->data.resolution = 0;
+	s->data.resolution_x = -1;
+	s->data.resolution_y = -1;
+	s->data.floor = 0;
+	s->data.floor_r = -1;
+	s->data.floor_g = -1;
+	s->data.floor_b = -1;
+	s->data.ceil = 0;
+	s->data.ceil_r = -1;
+	s->data.ceil_g = -1;
+	s->data.ceil_b = -1;
+	s->data.texture_NO = 0;
+	s->data.texture_SO = 0;
+	s->data.texture_WE = 0;
+	s->data.texture_EA = 0;
 }
 
-
-int main(void)
+int main(int argc, char **argv)
 {
-	int r;
-	int fd;
-	char *line;
-	t_cub	s;
+	t_cub s;
 
-	s.index = 0;
-	line = NULL;
-	fd = open("map.cub", O_RDONLY);
-	r = get_next_line(fd, &line);
-	ft_initialise_structure(&s);
-	while(r > 0)
-	{
-		read_cub(line, &s);
-		free(line);
-		line = NULL;
-		r = get_next_line(fd, &line);
-	}
-	free(line);
-	line = NULL;
+	if(parse_argc(argc, argv) == 1)
+		return(0);
+	init_structure(&s);
+	parse_file(&s, argv[1]);
 	return (0);
 }
