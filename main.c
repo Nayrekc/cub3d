@@ -2,6 +2,7 @@
 
 void	init_structure(t_cub *s)
 {
+	s->index = 0;
 	s->data.resolution = 0;
 	s->data.resolution_x = -1;
 	s->data.resolution_y = -1;

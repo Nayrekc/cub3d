@@ -1,7 +1,6 @@
-
 NO ./path_to_the_north_texwture
 
-R 1920 1080
+R 1920 1080   
 
 SO path_to_the_south_texture.xpm
 WE path_to_the_west_texture.xpm
@@ -9,8 +8,9 @@ EA path_to_the_east_texture.xpm
 S path_to_the_sprite_texture.xpm
 
 C 225,30,10
+F 220,   100, 10
 
-F 220,100,10
+
 
 
 1111111111111111111111111
