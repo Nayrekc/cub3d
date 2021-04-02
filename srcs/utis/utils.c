@@ -1,29 +1,29 @@
 #include "../../includes/cub3d.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi(t_cub *s, const char *str)
 {
-	int		i;
 	int		n;
 	long	res;
 
-	i = 0;
 	n = 1;
 	res = 0;
-	while (((str[i] >= 9 && str[i] <= 13) || str[i] == 32) && str[i])
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	while (((str[s->index] >= 9 && str[s->index] <= 13) || str[s->index] == 32) && str[s->index])
+		s->index++;
+	if (str[s->index] == '-' || str[s->index] == '+')
 	{
-		if (str[i] == '-')
+		if (str[s->index] == '-')
 			n = -1;
-		i++;
+		s->index++;
 	}
-	while ((str[i] >= '0' && str[i] <= '9') && str[i])
+	while ((str[s->index] >= '0' && str[s->index] <= '9') && str[s->index])
 	{
 		res = res * 10;
-		res = res + (str[i] - '0');
-		i++;
+		res = res + (str[s->index] - '0');
+		s->index++;
 	}
 	res = res * n;
+	while (((str[s->index] >= 9 && str[s->index] <= 13) || str[s->index] == 32) && str[s->index])
+		s->index++;
 	return (res);
 }
 
@@ -37,8 +37,9 @@ int	get_next_line(int fd, char **line)
 
 	r = 0;
 	l = 1;
-	if (!(*line = malloc(l)))
+	if (!(*line = calloc(l, sizeof(char))))
 		return (-1);
+	*line[0] = 0;
 	while ((r = read(fd, &c, 1)) && l++ && c != '\n')
 	{
 		if (!(tmp = malloc(l)))
@@ -107,4 +108,21 @@ void	ft_putstr(char *s)
 			i++;
 		}
 	}
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	char	*tab;
+	size_t	i;
+
+	i = 0;
+	tab = (char *)malloc(size * nmemb);
+	if (!(tab))
+		return (NULL);
+	while (i < (size * nmemb))
+	{
+		tab[i] = 0;
+		i++;
+	}
+	return (tab);
 }

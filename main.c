@@ -4,8 +4,8 @@ void	init_structure(t_cub *s)
 {
 	s->index = 0;
 	s->data.resolution = 0;
-	s->data.resolution_x = -1;
-	s->data.resolution_y = -1;
+	s->data.resolution_x = 0;
+	s->data.resolution_y = 0;
 	s->data.floor = 0;
 	s->data.floor_r = -1;
 	s->data.floor_g = -1;

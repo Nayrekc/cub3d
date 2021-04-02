@@ -1,5 +1,12 @@
 #include "../../includes/cub3d.h"
 
+int	data_full(t_cub *s)
+{
+	if (s->data.ceil == 1 && s->data.floor == 1 && s->data.resolution == 1)
+			return (1);
+	return (0);
+}
+
 int	parse_argc(int argc, char **argv)
 {
 	if (argc < 2 || argc >3)

@@ -41,7 +41,7 @@ int		get_next_line(int fd, char **line);
 //			GNL			//
 
 //			UTILS		//
-int		ft_atoi(const char *str);
+int		ft_atoi(t_cub *s, const char *str);
 void	init_structure(t_cub *s);
 size_t	ft_strlen(const char *str);
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
