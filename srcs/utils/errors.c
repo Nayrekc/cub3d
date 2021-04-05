@@ -2,6 +2,6 @@
 
 void	error_exit(char *str)
 {
-	ft_putstr(str);
+	printf("%s", str);
 	exit(1);
 }
