@@ -20,14 +20,19 @@ void	init_structure(t_cub *s)
 	s->data.texture_SO = 0;
 	s->data.texture_WE = 0;
 	s->data.texture_EA = 0;
+	s->data.texture_S = 0;
+	s->data.texture_NO_path = NULL;
+	s->data.texture_SO_path = NULL;
+	s->data.texture_WE_path = NULL;
+	s->data.texture_EA_path = NULL;
+	s->data.texture_S_path = NULL;
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_cub s;
+	t_cub	s;
 
-	if(parse_argc(argc, argv) == 1)
-		return(0);
+	parse_argc(argc, argv);
 	init_structure(&s);
 	parse_file(&s, argv[1]);
 	return (0);

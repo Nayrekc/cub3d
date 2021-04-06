@@ -7,59 +7,82 @@
 # include <fcntl.h>
 # include "../libft/libft.h"
 
-typedef struct	s_data
+typedef struct s_data
 {
-	int	resolution;
-	int	floor;
-	int	ceil;
-	int	texture_NO;
-	int	texture_SO;
-	int	texture_WE;
-	int	resolution_x;
-	int	resolution_y;
-	int	texture_EA;
-	int	floor_r;
-	int	floor_g;
-	int	floor_b;
-	int	floor_a;
-	int	ceil_r;
-	int	ceil_g;
-	int	ceil_b;
-	int	ceil_a;
+	int		resolution;
+	int		floor;
+	int		ceil;
+	int		texture_NO;
+	int		texture_SO;
+	int		texture_WE;
+	int		texture_EA;
+	int		texture_S;
+	int		resolution_x;
+	int		resolution_y;
+	int		floor_r;
+	int		floor_g;
+	int		floor_b;
+	int		floor_a;
+	int		ceil_r;
+	int		ceil_g;
+	int		ceil_b;
+	int		ceil_a;
 	char	*texture_NO_path;
 	char	*texture_SO_path;
 	char	*texture_WE_path;
 	char	*texture_EA_path;
+	char	*texture_S_path;
 }				t_data;
 
 typedef struct s_cub
 {
-	int	index;
+	int		index;
 	t_data	data;
 }				t_cub;
-
 
 //			GNL			//
 int		get_next_line(int fd, char **line);
 //			GNL			//
 
-//			UTILS		//
+//			UTILS.c		//
 int		ft_atoi(t_cub *s, const char *str);
-void	init_structure(t_cub *s);
 //			UTILS		//
+
+//			MAIN.C					//
+void	init_structure(t_cub *s);
+//			MAIN.C					//
 
 //			PARSER		//
-int	parse_argc(int argc, char **argv);
-void	parse_value(t_cub *s, char *line);
-void	parse_data(t_cub *s, int fd);
+void	parse_argc(int argc, char **argv);
 void	parse_file(t_cub *s, char *file);
+void	parse_data(t_cub *s, int fd);
+void	parse_type(t_cub *s, char *line);
+int	data_full(t_cub *s);
+void	parse_data_map(t_cub *s, char *line);
 
-void	parse_data_path_no(t_cub *s, char *line);
+//			PARSER_RESOLUTION.c		//
 void	parse_data_reso(t_cub *s, char *line);
+//			PARSER_RESOLUTION.c		//
+
+//			PARSER_COLOR.C			//
 void	parse_data_floor(t_cub *s, char *line);
 void	parse_data_ceil(t_cub *s, char *line);
-void	parse_data_color(t_cub *s, int state);
-void	error_exit(char *str);
-//			PARSER		//
+void	parse_data_color_add(t_cub *s, int state, char *line);
+void	parse_data_color_ceil(t_cub *s, char *line);
+void	parse_data_color_floor(t_cub *s, char *line);
+//			PARSER_COLOR.C			//
+
+//			PARSER_PATH.C			//
+void	parse_data_path_no(t_cub *s, char *line);
+void	parse_data_path_so(t_cub *s, char *line);
+void	parse_data_path_we(t_cub *s, char *line);
+void	parse_data_path_ea(t_cub *s, char *line);
+void	parse_data_path_s(t_cub *s, char *line);
+//			PARSER_PATH.C			//
+
+//			ERRORS.C				//
+void	error_exit(t_cub *s, char *line, char *str);
+void	error_exit_msg(char *str);
+//			ERRORS.C				//
 
 #endif
