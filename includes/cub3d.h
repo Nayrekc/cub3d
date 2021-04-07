@@ -32,6 +32,8 @@ typedef struct s_data
 	char	*texture_WE_path;
 	char	*texture_EA_path;
 	char	*texture_S_path;
+	char	*str;
+	char	**map;
 }				t_data;
 
 typedef struct s_cub
@@ -57,7 +59,7 @@ void	parse_argc(int argc, char **argv);
 void	parse_file(t_cub *s, char *file);
 void	parse_data(t_cub *s, int fd);
 void	parse_type(t_cub *s, char *line);
-int	data_full(t_cub *s);
+int		data_full(t_cub *s);
 void	parse_data_map(t_cub *s, char *line);
 
 //			PARSER_RESOLUTION.c		//
