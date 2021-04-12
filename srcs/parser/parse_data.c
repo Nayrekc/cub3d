@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 11:24:52 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/08 13:55:17 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/12 07:50:21 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	parse_data(t_cub *s, int fd)
 		r = get_next_line(fd, &line);
 	}
 	free(line);
-	printf("%s", s->data.map);
 	if (r == - 1)
 		error_exit(s, line, "Error\nReading .cub");
 }

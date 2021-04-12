@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 15:53:21 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/07 14:28:24 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/12 07:49:35 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 int				ft_isascii(int c);
 int				ft_isprint(int c);
+int				ft_char_in_str(int c, char *str);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
 char			*ft_strchr(const char *str, int c);
