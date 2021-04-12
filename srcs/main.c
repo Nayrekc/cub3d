@@ -26,6 +26,8 @@ void	init_structure(t_cub *s)
 	s->data.texture_WE_path = NULL;
 	s->data.texture_EA_path = NULL;
 	s->data.texture_S_path = NULL;
+	s->data.str = "\0";
+	s->data.map = NULL;
 }
 
 int	main(int argc, char **argv)
