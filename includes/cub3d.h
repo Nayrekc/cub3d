@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/12 11:36:53 by ketaouki          #+#    #+#             */
+/*   Updated: 2021/04/12 12:27:12 by ketaouki         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 # include <stdlib.h>
@@ -12,11 +24,6 @@ typedef struct s_data
 	int		resolution;
 	int		floor;
 	int		ceil;
-	int		texture_NO;
-	int		texture_SO;
-	int		texture_WE;
-	int		texture_EA;
-	int		texture_S;
 	int		resolution_x;
 	int		resolution_y;
 	int		floor_r;
@@ -34,6 +41,10 @@ typedef struct s_data
 	char	*texture_S_path;
 	char	*str;
 	char	**map;
+	char	**map_fill;
+	int		start_parse_map;
+	int		spawn_x;
+	int		spawn_y;
 }				t_data;
 
 typedef struct s_cub
@@ -61,6 +72,9 @@ void	parse_data(t_cub *s, int fd);
 void	parse_type(t_cub *s, char *line);
 int		data_full(t_cub *s);
 void	parse_data_map(t_cub *s, char *line);
+void	parse_spawn_map(t_cub *s, char *line);
+void	spawn_map(t_cub *s);
+void	fill_map_v(t_cub *s);
 
 //			PARSER_RESOLUTION.c		//
 void	parse_data_reso(t_cub *s, char *line);
@@ -69,7 +83,7 @@ void	parse_data_reso(t_cub *s, char *line);
 //			PARSER_COLOR.C			//
 void	parse_data_floor(t_cub *s, char *line);
 void	parse_data_ceil(t_cub *s, char *line);
-void	parse_data_color_add(t_cub *s, int state, char *line);
+void	parse_data_color_add(t_cub *s, char *line, int state);
 void	parse_data_color_ceil(t_cub *s, char *line);
 void	parse_data_color_floor(t_cub *s, char *line);
 //			PARSER_COLOR.C			//

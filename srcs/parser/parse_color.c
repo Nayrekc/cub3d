@@ -13,7 +13,7 @@ void	parse_data_floor(t_cub *s, char *line)
 		else if (ft_isdigit(line[s->index]) == 0 && line[s->index] != ' ')
 			error_exit(s, line, "Error\nFormat <r, g, b>");
 	}
-	parse_data_color_add(s, 1, line);
+	parse_data_color_add(s, line, 1);
 }
 
 void	parse_data_color_floor(t_cub *s, char *line)
@@ -53,7 +53,7 @@ void	parse_data_ceil(t_cub *s, char *line)
 		else if (ft_isdigit(line[s->index]) == 0 && line[s->index] != ' ')
 			error_exit(s, line, "Error\nFormat <r, g, b>");
 	}
-	parse_data_color_add(s, 2, line);
+	parse_data_color_add(s, line, 2);
 }
 
 void	parse_data_color_ceil(t_cub *s, char *line)
@@ -80,7 +80,7 @@ void	parse_data_color_ceil(t_cub *s, char *line)
 		error_exit(s, line, "Error\nFormat <r, g, b>");
 }
 
-void	parse_data_color_add(t_cub *s, int state, char *line)
+void	parse_data_color_add(t_cub *s, char *line, int state)
 {
 	if (state == 1)
 	{

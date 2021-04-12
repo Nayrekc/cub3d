@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/12 11:36:51 by ketaouki          #+#    #+#             */
+/*   Updated: 2021/04/12 11:49:24 by ketaouki         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 void	init_structure(t_cub *s)
@@ -16,11 +28,6 @@ void	init_structure(t_cub *s)
 	s->data.ceil_g = -1;
 	s->data.ceil_b = -1;
 	s->data.ceil_a = 0;
-	s->data.texture_NO = 0;
-	s->data.texture_SO = 0;
-	s->data.texture_WE = 0;
-	s->data.texture_EA = 0;
-	s->data.texture_S = 0;
 	s->data.texture_NO_path = NULL;
 	s->data.texture_SO_path = NULL;
 	s->data.texture_WE_path = NULL;
@@ -28,6 +35,10 @@ void	init_structure(t_cub *s)
 	s->data.texture_S_path = NULL;
 	s->data.str = "\0";
 	s->data.map = NULL;
+	s->data.map_fill = NULL;
+	s->data.start_parse_map = 0;
+	s->data.spawn_x = 0;
+	s->data.spawn_y = 0;
 }
 
 int	main(int argc, char **argv)

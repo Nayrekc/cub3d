@@ -3,9 +3,9 @@
 int	data_full(t_cub *s)
 {
 	if (s->data.ceil == 1 && s->data.floor == 1 && s->data.resolution == 1
-		&& s->data.texture_NO == 1 && s->data.texture_SO == 1
-		&& s->data.texture_WE == 1 && s->data.texture_EA == 1
-		&& s->data.texture_S == 1)
+		&& s->data.texture_NO_path != NULL && s->data.texture_SO_path != NULL
+		&& s->data.texture_WE_path != NULL && s->data.texture_EA_path != NULL
+		&& s->data.texture_S_path != NULL)
 		return (1);
 	return (0);
 }
