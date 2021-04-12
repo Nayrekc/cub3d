@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 11:24:52 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/12 13:28:34 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/12 14:43:56 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,20 +70,26 @@ void	parse_data(t_cub *s, int fd)
 	if (r == -1)
 		error_exit(s, line, "Error\nReading .cub");
 
-
-
 	while(s->data.map[i])
 	{
 		printf("%s\n", s->data.map[i]);
 		i++;
 	}
+	printf("\n");
 	fill_map_v(s);
 	while(s->data.map_fill[y])
 	{
 		printf("%s\n", s->data.map_fill[y]);
 		y++;
 	}
-
+	ft_recursive_check(s);
+	printf("\n");
+	y = 0;
+	while(s->data.map_fill[y])
+	{
+		printf("%s\n", s->data.map_fill[y]);
+		y++;
+	}
 	// printf("\n%s\n", s->data.texture_NO_path);
 	// printf("\n%s\n", s->data.texture_SO_path);
 	// printf("\n%s\n", s->data.texture_WE_path);

@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:32 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/12 13:47:14 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/12 15:08:19 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,21 @@ void	fill_map_v(t_cub *s)
 	}
 }
 
-int		recursive(t_cub *s)
+int		ft_recursive_check(t_cub *s)
 {
-	s->data.map_fill[s->data.spawn_y][s->data.spawn_y];
+	int x;
+	int y;
 
+	x = s->data.spawn_x;
+	y = s->data.spawn_y;
+	s->data.map_fill[y][x] = s->data.map[y][x];
+	if (s->data.map[y][x] == '1')
+		return (0);
+	if (s->data.map[y][x] == ' ')
+		return (-1);
+	if (s->data.map_fill[y + 1][x] == 'V')
 	
+		return(-1);
+
+	return (0);
 }

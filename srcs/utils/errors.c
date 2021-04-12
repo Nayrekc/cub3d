@@ -19,6 +19,8 @@ void	error_exit(t_cub *s, char *line, char *str)
 	// 	free(s->data.str);
 	if (s->data.map != NULL)
 		free(s->data.map);
+	if (s->data.map_fill != NULL)
+		free(s->data.map_fill);
 	exit (0);
 }
 
