@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:51 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/13 15:13:04 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/13 17:39:01 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,37 @@ int	main(int argc, char **argv)
 	parse_argc(argc, argv);
 	init_structure(&s);
 	parse_file(&s, argv[1]);
+
+	void *win = NULL;
+	void *mlx = NULL;
+	int i = 0;
+	int y = 0;
+	mlx = mlx_init();
+	win = mlx_new_window(mlx, s.data.resolution_x , s.data.resolution_y, "cub3d");
+
+	// void *img;
+	// int width = 0;
+	// int height = 0;
+
+	// img = mlx_xpm_file_to_image(mlx, s.data.texture_NO_path, &width, &height);
+	// mlx_put_image_to_window(mlx, win, img, 0, 0);
+
+	// mlx_get_screen_size(mlx, )
+	while(i < 380)
+	{
+		y = 0;
+		while(y < 380)
+		{
+			mlx_pixel_put(mlx, win, i, y, s.data.floor_a);
+			y++;
+		}
+		i++;
+	}
+	mlx_loop(mlx);
+
+
+
+
+
 	return (0);
 }

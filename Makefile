@@ -15,13 +15,15 @@ SRCS			=		\
 
 OBJS			= 		$(addprefix srcs/, $(SRCS:.c=.o))
 
-LIB 			= 		libft/libft.a
+LIB 			= 		libft/libft.a mlx/libmlx.dylib
 
 all				: 		$(NAME)
 
 $(NAME)		: $(OBJS)
 		@make -C libft
-		@$(CC) $(CFLAGS) $(OBJS) -I $(HEADERS) $(LIB) -o $(NAME)
+		@make -C mlx
+		cp mlx/libmlx.dylib .
+		@$(CC) $(CFLAGS) $(OBJS) -I $(HEADERS) $(LIB) -o $(NAME) -Lmlx -lmlx -lm
 
 %.o: %.c $(HEADERS)
 		@$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_DIR)
@@ -30,11 +32,15 @@ bonus		:		$(NAME)
 
 clean		:
 		@/bin/rm -f $(OBJS)
+		@/bin/rm -f libmlx.dylib
 		@make clean -C libft
+		@make clean -C mlx
 
 fclean		:		clean
 		@/bin/rm -f $(NAME)
+		@/bin/rm -f libmlx.dylib
 		@make fclean -C libft
+		@make fclean -C mlx
 
 re			:		fclean all
 
