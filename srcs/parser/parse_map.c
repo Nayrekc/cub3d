@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:32 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/12 15:08:19 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/13 15:35:35 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,8 @@ void	parse_spawn_map(t_cub *s, char *line)
 			count++;
 		i++;
 	}
-	if (count == 0)
-		error_exit(s, line, "Error\nNo Spawn\n");
-	if (count > 1)
-		error_exit(s, line, "Error\nDouble Spawn\n");
+	if (count == 0 || count > 1)
+		error_exit(s, line, "Error\nSpawn\n");
 }
 
 void	parse_data_map(t_cub *s, char *line)
@@ -44,7 +42,27 @@ void	parse_data_map(t_cub *s, char *line)
 	}
 	s->data.str = ft_strjoin(s->data.str, line, '\n');
 	s->data.map = ft_split(s->data.str, '\n');
-	s->data.map_fill = ft_split(s->data.str, '\n');
+}
+
+void	clean_map(t_cub *s)
+{
+	int y;
+	int x;
+
+	y = 0;
+	x = 0;
+	while (s->data.map[y])
+	{
+		x = 0;
+		while (s->data.map[y][x])
+		{
+			if (s->data.map[y][x] == '1' || s->data.map[y][x] == '0'
+				|| s->data.map[y][x] == '2')
+				s->data.map[y][x] = ' ';
+			x++;
+		}
+		y++;
+	}
 }
 
 void	spawn_map(t_cub *s)
@@ -71,40 +89,24 @@ void	spawn_map(t_cub *s)
 	}
 }
 
-void	fill_map_v(t_cub *s)
+void    ft_check_map(t_cub *s, char *line, int y, int x)
 {
-	int	y;
-	int	x;
-
-	y = 0;
-	x = 0;
-	while (s->data.map_fill[y])
-	{
-		x = 0;
-		while (s->data.map_fill[y][x])
-		{
-			s->data.map_fill[y][x] = 'V';
-			x++;
-		}
-		y++;
-	}
-}
-
-int		ft_recursive_check(t_cub *s)
-{
-	int x;
-	int y;
-
-	x = s->data.spawn_x;
-	y = s->data.spawn_y;
-	s->data.map_fill[y][x] = s->data.map[y][x];
+	if (x < 0 || y < 0 || x >= (int)ft_strlen(s->data.map[y]) || s->data.map[y][x] == ' ') // x >= (int)ft_strlen(&s->data.map[y][x]) |
+		error_exit(s, line, "Error\nIn the map format\n");
+	if (ft_char_in_str(s->data.map[y][x], ".$|" ))
+		return ;
+	if (s->data.map[y][x] == '0')
+		s->data.map[y][x] = '.';
 	if (s->data.map[y][x] == '1')
-		return (0);
-	if (s->data.map[y][x] == ' ')
-		return (-1);
-	if (s->data.map_fill[y + 1][x] == 'V')
-	
-		return(-1);
-
-	return (0);
+	{
+		s->data.map[y][x] = '|';
+		return ;
+	}
+	if (s->data.map[y][x] == '2')
+		s->data.map[y][x] = '$';
+	ft_check_map(s, line, y + 1, x);
+	ft_check_map(s, line, y - 1, x);
+	ft_check_map(s, line, y, x - 1);
+	ft_check_map(s, line, y, x + 1);
 }
+

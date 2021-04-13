@@ -15,12 +15,8 @@ void	error_exit(t_cub *s, char *line, char *str)
 		free(s->data.texture_EA_path);
 	if (s->data.texture_S_path != NULL)
 		free(s->data.texture_S_path);
-	// if (s->data.str != NULL ||)
-	// 	free(s->data.str);
 	if (s->data.map != NULL)
 		free(s->data.map);
-	if (s->data.map_fill != NULL)
-		free(s->data.map_fill);
 	exit (0);
 }
 

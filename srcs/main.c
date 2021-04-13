@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:51 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/12 11:49:24 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/13 15:13:04 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	init_structure(t_cub *s)
 	s->data.texture_S_path = NULL;
 	s->data.str = "\0";
 	s->data.map = NULL;
-	s->data.map_fill = NULL;
 	s->data.start_parse_map = 0;
 	s->data.spawn_x = 0;
 	s->data.spawn_y = 0;

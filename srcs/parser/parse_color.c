@@ -11,7 +11,7 @@ void	parse_data_floor(t_cub *s, char *line)
 		if (ft_isdigit(line[s->index]) == 1)
 			parse_data_color_floor(s, line);
 		else if (ft_isdigit(line[s->index]) == 0 && line[s->index] != ' ')
-			error_exit(s, line, "Error\nFormat <r, g, b>");
+			error_exit(s, line, "Error\nFormat <r, g, b>\n");
 	}
 	parse_data_color_add(s, line, 1);
 }
@@ -22,7 +22,7 @@ void	parse_data_color_floor(t_cub *s, char *line)
 	{
 		s->data.floor_r = ft_atoi(s, line);
 		if (!(line[s->index] == ','))
-			error_exit(s, line, "Error\nFormat <r, g, b>");
+			error_exit(s, line, "Error\nFormat <r, g, b>\n");
 		else
 			s->index++;
 	}
@@ -30,14 +30,14 @@ void	parse_data_color_floor(t_cub *s, char *line)
 	{
 		s->data.floor_g = ft_atoi(s, line);
 		if (!(line[s->index] == ','))
-			error_exit(s, line, "Error\nFormat <r, g, b>");
+			error_exit(s, line, "Error\nFormat <r, g, b>\n");
 		else
 			s->index++;
 	}
 	else if (s->data.floor_b == -1)
 		s->data.floor_b = ft_atoi(s, line);
 	else
-		error_exit(s, line, "Error\nFormat <r, g, b>");
+		error_exit(s, line, "Error\nFormat <r, g, b>\n");
 }
 
 void	parse_data_ceil(t_cub *s, char *line)
@@ -51,7 +51,7 @@ void	parse_data_ceil(t_cub *s, char *line)
 		if (ft_isdigit(line[s->index]) == 1)
 			parse_data_color_ceil(s, line);
 		else if (ft_isdigit(line[s->index]) == 0 && line[s->index] != ' ')
-			error_exit(s, line, "Error\nFormat <r, g, b>");
+			error_exit(s, line, "Error\nFormat <r, g, b>\n");
 	}
 	parse_data_color_add(s, line, 2);
 }
@@ -62,7 +62,7 @@ void	parse_data_color_ceil(t_cub *s, char *line)
 	{
 		s->data.ceil_r = ft_atoi(s, line);
 		if (!(line[s->index] == ','))
-			error_exit(s, line, "Error\nFormat <r, g, b>");
+			error_exit(s, line, "Error\nFormat <r, g, b>\n");
 		else
 			s->index++;
 	}
@@ -70,14 +70,14 @@ void	parse_data_color_ceil(t_cub *s, char *line)
 	{
 		s->data.ceil_g = ft_atoi(s, line);
 		if (!(line[s->index] == ','))
-			error_exit(s, line, "Error\nFormat <r, g, b>");
+			error_exit(s, line, "Error\nFormat <r, g, b>\n");
 		else
 			s->index++;
 	}
 	else if (s->data.ceil_b == -1)
 		s->data.ceil_b = ft_atoi(s, line);
 	else
-		error_exit(s, line, "Error\nFormat <r, g, b>");
+		error_exit(s, line, "Error\nFormat <r, g, b>\n");
 }
 
 void	parse_data_color_add(t_cub *s, char *line, int state)
@@ -90,7 +90,7 @@ void	parse_data_color_add(t_cub *s, char *line, int state)
 			s->data.floor_a = (256 * 256 * s->data.floor_r + 256
 					* s->data.floor_g + s->data.floor_b);
 		else
-			error_exit(s, line, "Error\n RGB need to be >= 0 && <= 255");
+			error_exit(s, line, "Error\nRGB need to be >= 0 && <= 255\n");
 	}
 	if (state == 2)
 	{
@@ -100,6 +100,6 @@ void	parse_data_color_add(t_cub *s, char *line, int state)
 			s->data.ceil_a = (256 * 256 * s->data.ceil_r + 256
 					* s->data.ceil_g + s->data.ceil_b);
 		else
-			error_exit(s, line, "Error\n RGB need to be >= 0 && <= 255");
+			error_exit(s, line, "Error\nRGB need to be >= 0 && <= 255\n");
 	}
 }

@@ -11,7 +11,7 @@ CFLAGS 			= 		-Wall -Wextra -Werror -O3
 SRCS			=		\
 						main.c \
 						$(addprefix parser/, parse_data.c parse.c parse_color.c parse_resolution.c parse_path.c parse_map.c) \
-						$(addprefix utils/, errors.c utils.c) \
+						$(addprefix utils/, errors.c utils.c aff_map.c) \
 
 OBJS			= 		$(addprefix srcs/, $(SRCS:.c=.o))
 

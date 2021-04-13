@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:53 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/12 14:42:36 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/13 15:34:07 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct s_data
 	char	*texture_S_path;
 	char	*str;
 	char	**map;
-	char	**map_fill;
 	int		start_parse_map;
 	int		spawn_x;
 	int		spawn_y;
@@ -74,8 +73,11 @@ int		data_full(t_cub *s);
 void	parse_data_map(t_cub *s, char *line);
 void	parse_spawn_map(t_cub *s, char *line);
 void	spawn_map(t_cub *s);
-void	fill_map_v(t_cub *s);
-int		ft_recursive_check(t_cub *s);
+void    ft_check_map(t_cub *s, char *line, int y, int x);
+void	clean_map(t_cub *s);
+void	aff_map(t_cub *s);
+void	aff_map_utilis(char c);
+void	aff_player(int c);
 
 //			PARSER_RESOLUTION.c		//
 void	parse_data_reso(t_cub *s, char *line);
