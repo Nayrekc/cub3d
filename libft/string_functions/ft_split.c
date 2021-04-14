@@ -6,13 +6,13 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 14:39:20 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/13 15:18:44 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/14 09:28:08 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-static int	ft_countline(char const *s, char c)
+static int	ft_countline(char *s, char c)
 {
 	int	i;
 	int	k;
@@ -25,7 +25,7 @@ static int	ft_countline(char const *s, char c)
 	return (k);
 }
 
-static int	ft_countchar(char const *s, char c, int i)
+static int	ft_countchar(char *s, char c, int i)
 {
 	int	k;
 
@@ -35,7 +35,7 @@ static int	ft_countchar(char const *s, char c, int i)
 	return (k);
 }
 
-static char	**ft_d(char const *s, char c, char **str, int line)
+static char	**ft_d(char *s, char c, char **str, int line)
 {
 	int	i;
 	int	k;
@@ -61,7 +61,7 @@ static char	**ft_d(char const *s, char c, char **str, int line)
 	return (str);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char	**str;
 	int		k;

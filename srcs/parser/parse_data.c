@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 11:24:52 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/13 15:34:18 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/14 09:26:59 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@ void	parse_type(t_cub *s, char *line)
 		error_exit(s, line, "Error\n");
 }
 
+void	do_map(t_cub *s, char *line)
+{
+	spawn_map(s, line);
+	ft_check_map(s, line, s->data.spawn_y, s->data.spawn_x);
+	clean_map(s);
+	aff_map(s);
+}
+
 void	parse_data(t_cub *s, int fd)
 {
 	char	*line;
@@ -56,11 +64,8 @@ void	parse_data(t_cub *s, int fd)
 	}
 	free(line);
 	line = NULL;
-	parse_spawn_map(s, line);
-	spawn_map(s);
+	do_map(s, line);
+	close(fd);
 	if (r == -1)
 		error_exit(s, line, "Error\nReading .cub\n");
-	ft_check_map(s, line, s->data.spawn_y, s->data.spawn_x);
-	clean_map(s);
-	aff_map(s);
 }

@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 15:53:21 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/12 11:36:45 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/14 08:32:19 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char			*ft_strdup(const char *src);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char *s1, char *s2, char c);
 char			*ft_strtrim(char const *s1, char const *set);
-char			**ft_split(char const *s, char c);
+char			**ft_split(char *s, char c);
 char			*ft_itoa(int n);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void			ft_putchar_fd(char c, int fd);

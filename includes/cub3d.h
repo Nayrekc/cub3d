@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:53 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/13 16:22:45 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/14 09:29:12 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,27 @@ int		ft_atoi(t_cub *s, const char *str);
 void	init_structure(t_cub *s);
 //			MAIN.C					//
 
-//			PARSER		//
+//			PARSER					//
 void	parse_argc(int argc, char **argv);
 void	parse_file(t_cub *s, char *file);
 void	parse_data(t_cub *s, int fd);
 void	parse_type(t_cub *s, char *line);
 int		data_full(t_cub *s);
 void	parse_data_map(t_cub *s, char *line);
-void	parse_spawn_map(t_cub *s, char *line);
-void	spawn_map(t_cub *s);
+//			PARSER					//
+
+//			PARSER_MAP.C			//
+void	do_map(t_cub *s, char *line);
+void	spawn_map(t_cub *s, char *line);
 void    ft_check_map(t_cub *s, char *line, int y, int x);
 void	clean_map(t_cub *s);
+
+//			AFF_MAP_TERMINAL		//
 void	aff_map(t_cub *s);
 void	aff_map_utilis(char c);
 void	aff_player(int c);
+//			AFF_MAP_TERMINAL		//
+
 
 //			PARSER_RESOLUTION.c		//
 void	parse_data_reso(t_cub *s, char *line);
@@ -100,9 +107,10 @@ void	parse_data_path_ea(t_cub *s, char *line);
 void	parse_data_path_s(t_cub *s, char *line);
 //			PARSER_PATH.C			//
 
-//			ERRORS.C				//
+//			EXIT.C				//
 void	error_exit(t_cub *s, char *line, char *str);
 void	error_exit_msg(char *str);
-//			ERRORS.C				//
+void	clean_exit(t_cub *s);
+//			EXIT.C				//
 
 #endif
