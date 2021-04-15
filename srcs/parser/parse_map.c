@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:32 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/14 09:42:48 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/15 08:50:19 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	spawn_map(t_cub *s, char *line)
 	int count;
 
 	y = 0;
-	count = 0;
 	x = 0;
+	count = 0;
 	while (s->data.map[y])
 	{
 		x = 0;
@@ -96,4 +96,5 @@ void	parse_data_map(t_cub *s, char *line)
 	}
 	s->data.str = ft_strjoin(s->data.str, line, '\n');
 	s->data.map = ft_split(s->data.str, '\n');
+	free(s->data.str);
 }

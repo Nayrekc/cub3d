@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:51 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/14 09:33:15 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/15 08:49:55 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	init_structure(t_cub *s)
 	s->data.texture_WE_path = NULL;
 	s->data.texture_EA_path = NULL;
 	s->data.texture_S_path = NULL;
-	s->data.str = "\0";
+	s->data.str = ft_calloc(1, sizeof(char));
 	s->data.map = NULL;
 	s->data.start_parse_map = 0;
 	s->data.spawn_x = 0;
@@ -83,7 +83,6 @@ int	main(int argc, char **argv)
 		printf("%s\n", s.data.map[y]);
 		y++;
 	}
-	printf("%s", s.data.texture_EA_path);
 	while(1);
 	return (0);
 }
