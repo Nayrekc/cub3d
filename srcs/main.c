@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:51 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/19 13:27:56 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/19 14:00:19 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,16 @@ void	init_structure(t_cub *s)
 int	main(int argc, char **argv)
 {
 	t_cub	s;
-	int y;
+	int		y;
 
 	y = 0;
 	parse_argc(argc, argv);
 	init_structure(&s);
 	parse_file(&s, argv[1]);
-	while(s.data.map[y])
+	while (s.data.map[y])
 	{
 		printf("%s\n", s.data.map[y]);
 		y++;
 	}
-	while(1);
 	return (0);
 }
