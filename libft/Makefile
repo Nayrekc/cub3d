@@ -1,4 +1,4 @@
-CC=gcc
+CC=@gcc
 CFLAGS=-Wall -Wextra -Werror
 NAME=libft.a
 SRCS=	./allocations/ft_bzero.c \
@@ -47,7 +47,9 @@ SRCS=	./allocations/ft_bzero.c \
 		./string_functions/ft_strjoin.c \
 		./string_functions/ft_strtrim.c \
 		./string_functions/ft_split.c \
-		./string_functions/ft_strmapi.c
+		./string_functions/ft_strmapi.c \
+		./get_next_line/get_next_line.c \
+		./get_next_line/get_next_line_utils.c
 OBJS=$(SRCS:.c=.o)
 INC=libft.h
 RM=@rm -f

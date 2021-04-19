@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 11:24:52 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/15 08:40:06 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/19 12:43:15 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ void	parse_type(t_cub *s, char *line)
 
 void	do_map(t_cub *s, char *line)
 {
+	s->data.map = ft_split(s->data.str, '\n');
 	spawn_map(s, line);
 	ft_check_map(s, line, s->data.spawn_y, s->data.spawn_x);
 	clean_map(s);
-	aff_map(s);
 }
 
 void	parse_data(t_cub *s, int fd)

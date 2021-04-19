@@ -11,7 +11,7 @@ CFLAGS 			= 		-Wall -Wextra -Werror -O3
 SRCS			=		\
 						main.c \
 						$(addprefix parser/, parse_data.c parse.c parse_color.c parse_resolution.c parse_path.c parse_map.c) \
-						$(addprefix utils/, exit.c utils.c aff_map_terminal.c) \
+						$(addprefix utils/, exit.c utils.c) \
 
 OBJS			= 		$(addprefix srcs/, $(SRCS:.c=.o))
 
@@ -22,7 +22,7 @@ all				: 		$(NAME)
 $(NAME)		: $(OBJS)
 		@make -C libft
 		@make -C mlx
-		cp mlx/libmlx.dylib .
+		@cp mlx/libmlx.dylib .
 		@$(CC) $(CFLAGS) $(OBJS) -I $(HEADERS) $(LIB) -o $(NAME) -Lmlx -lmlx -lm
 
 %.o: %.c $(HEADERS)

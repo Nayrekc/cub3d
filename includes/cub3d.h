@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:53 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/14 09:29:12 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/19 13:44:10 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,6 @@ typedef struct s_cub
 	t_data	data;
 }				t_cub;
 
-//			GNL			//
-int		get_next_line(int fd, char **line);
-//			GNL			//
-
 //			UTILS.c		//
 int		ft_atoi(t_cub *s, const char *str);
 //			UTILS		//
@@ -77,15 +73,8 @@ void	parse_data_map(t_cub *s, char *line);
 //			PARSER_MAP.C			//
 void	do_map(t_cub *s, char *line);
 void	spawn_map(t_cub *s, char *line);
-void    ft_check_map(t_cub *s, char *line, int y, int x);
+void	ft_check_map(t_cub *s, char *line, int y, int x);
 void	clean_map(t_cub *s);
-
-//			AFF_MAP_TERMINAL		//
-void	aff_map(t_cub *s);
-void	aff_map_utilis(char c);
-void	aff_player(int c);
-//			AFF_MAP_TERMINAL		//
-
 
 //			PARSER_RESOLUTION.c		//
 void	parse_data_reso(t_cub *s, char *line);

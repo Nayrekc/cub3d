@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 14:42:39 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/15 08:39:28 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/19 12:29:59 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ char	*ft_strjoin(char *s1, char *s2, char c)
 	while (s2[j])
 		dest[k++] = s2[j++];
 	dest[k] = '\0';
+	free(s1);
 	return (dest);
 }
