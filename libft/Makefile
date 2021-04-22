@@ -18,7 +18,6 @@ SRCS=	./allocations/ft_bzero.c \
 		./checker/ft_strchr.c \
 		./checker/ft_strrchr.c \
 		./checker/ft_char_in_str.c \
-		./converters/ft_atoi.c \
 		./converters/ft_itoa.c \
 		./list_functions/ft_lstadd_back.c \
 		./list_functions/ft_lstadd_front.c \
@@ -54,7 +53,7 @@ OBJS=$(SRCS:.c=.o)
 INC=libft.h
 RM=@rm -f
 
-%.c%.o:
+%.c%.o: $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@ $(INC) -g
 
 all:		$(NAME)
@@ -63,6 +62,7 @@ $(OBJS):	$(INC)
 
 $(NAME): 	$(INC) $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
+	@echo "\033[34m[Libft] Compiled\033[0m"
 
 clean:
 	$(RM) $(OBJS) libft.ghc.h

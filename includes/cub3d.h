@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:53 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/21 10:20:42 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/04/22 11:50:33 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,10 @@ typedef struct s_player
 
 typedef struct s_cub
 {
-	int		index;
-	t_data	data;
-	t_window window;
+	int			index;
+	t_data		data;
+	t_window	window;
+	t_player	player;
 }				t_cub;
 
 //			UTILS.c		//
@@ -118,9 +119,6 @@ void	error_exit(t_cub *s, char *line, char *str);
 void	error_exit_msg(char *str);
 void	clean_exit(t_cub *s);
 //			EXIT.C				//
-
-
-
 
 //			GAME				//
 
