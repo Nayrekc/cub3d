@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:53 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/22 11:50:33 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/03 09:31:38 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,32 +43,61 @@ typedef struct s_data
 	char	*str;
 	char	**map;
 	int		start_parse_map;
+	char	spawn;
 	int		spawn_x;
 	int		spawn_y;
 }				t_data;
 
-typedef struct s_window
-{
-	void	*mlx;
-	void	*win;
-}				t_window;
-
 typedef struct s_player
 {
-	double	x;
-	double	y;
-	double	dir_x;
-	double	dir_y;
-	double	cam_x;
-	double	cam_y;
+	double	position_x;
+	double	position_y;
+	double	direction_x;
+	double	direction_y;
+	double	cam_plane_x;
+	double	cam_plane_y;
 }				t_player;
+
+
+typedef struct	s_raycast
+{
+	double		raydir_x; //calcul de direction x du rayon
+	double		raydir_y; //calcul de direction y du rayon
+	double		camera_x; //point x sur la plan camera : Gauche ecran = -1, milieu = 0, droite = 1
+	int			map_x; // coordonée x du carré dans lequel est pos
+	int			map_y; // coordonnée y du carré dans lequel est pos
+	double		sidedist_x; //distance que le rayon parcours jusqu'au premier point d'intersection vertical (=un coté x)
+	double		sidedist_y; //distance que le rayon parcours jusqu'au premier point d'intersection horizontal (= un coté y)
+	double		deltadist_x; //distance que rayon parcours entre chaque point d'intersection vertical
+	double		deltadist_y; //distance que le rayon parcours entre chaque point d'intersection horizontal
+	int			step_x; // -1 si doit sauter un carre dans direction x negative, 1 dans la direction x positive
+	int			step_y; // -1 si doit sauter un carre dans la direction y negative, 1 dans la direction y positive
+	int			hit; // 1 si un mur a ete touche, 0 sinon
+	int			side; // 0 si c'est un cote x qui est touche (vertical), 1 si un cote y (horizontal)
+	double		wall_dist; // distance du joueur au mur
+	int			line_height; //hauteur de la ligne a dessiner
+	int			draw_start; //position de debut ou il faut dessiner
+	int			draw_end; //position de fin ou il faut dessiner
+	int			x; //permet de parcourir tous les rayons
+	int			wall_height;
+}				t_raycast;
+
 
 typedef struct s_cub
 {
 	int			index;
 	t_data		data;
-	t_window	window;
+	void		*mlx;
+	void		*win;
 	t_player	player;
+	t_raycast	raycast;
+
+	double	time;
+	double	old_time;
+
+	double	width;
+	double	height;
+	double	frame_time;
 }				t_cub;
 
 //			UTILS.c		//
@@ -122,5 +151,6 @@ void	clean_exit(t_cub *s);
 
 //			GAME				//
 
-void	window(t_cub *s);
+void	raycast(t_cub *s);
+void	init_raycast_mlx(t_cub *s);
 #endif

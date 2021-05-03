@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:51 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/22 11:50:00 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/03 10:18:05 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ int	main(int argc, char **argv)
 		printf("%s\n", s.data.map[y]);
 		y++;
 	}
-	window(&s);
+	raycast(&s);
 	return (0);
 }
