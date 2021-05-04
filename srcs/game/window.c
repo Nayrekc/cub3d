@@ -10,9 +10,6 @@ void	window(t_cub *s)
 	y = 0;
 
 	init_raycast_mlx(s);
-
-
-
 	s->mlx = mlx_init();
 	s->win = mlx_new_window(s->mlx, s->width, s->height, "Cub3D");
 	s->img = mlx_new_image(s->mlx, s->width, s->height);
