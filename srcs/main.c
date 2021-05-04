@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:51 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/04 07:32:12 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/04 14:23:21 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,15 @@
 
 void	init_structure(t_cub *s)
 {
-	s->index = 0;
-	s->data.resolution = 0;
+	ft_bzero(s, sizeof(t_cub));
 	s->data.resolution_x = -1;
 	s->data.resolution_y = -1;
-	s->data.floor = 0;
 	s->data.floor_r = -1;
 	s->data.floor_g = -1;
 	s->data.floor_b = -1;
-	s->data.floor_a = 0;
-	s->data.ceil = 0;
 	s->data.ceil_r = -1;
 	s->data.ceil_g = -1;
 	s->data.ceil_b = -1;
-	s->data.ceil_a = 0;
 	s->data.texture_NO_path = NULL;
 	s->data.texture_SO_path = NULL;
 	s->data.texture_WE_path = NULL;
@@ -35,9 +30,6 @@ void	init_structure(t_cub *s)
 	s->data.texture_S_path = NULL;
 	s->data.str = ft_calloc(1, sizeof(char));
 	s->data.map = NULL;
-	s->data.start_parse_map = 0;
-	s->data.spawn_x = 0;
-	s->data.spawn_y = 0;
 }
 
 int	main(int argc, char **argv)

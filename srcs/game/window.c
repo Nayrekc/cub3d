@@ -18,15 +18,8 @@ void	window(t_cub *s)
 	s->img = mlx_new_image(s->mlx, s->width, s->height);
 	s->addr = (int *)mlx_get_data_addr(s->img, &s->bits_per_pixel, &s->line_length, &s->endian);
 	raycast(s);
-	// while(y < s->height)
-	// {
-	// 	x = 0;
-	// 	while(x < s->width)
-	// 	{
-	// 		s->addr[y * s->line_length / 4 + x] = s->data.floor_a;
-	// 		x++;
-	// 	}
-	// 	y++;
-	// }
+	mlx_hook(s->win, 2, 1L<<0, key_press, s);
+	mlx_hook(s->win, 3, 1L<<0, key_release, s);
+	mlx_loop_hook(s->mlx, raycast, s);
 	mlx_loop(s->mlx);
 }

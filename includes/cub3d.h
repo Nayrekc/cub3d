@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:53 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/04 08:41:57 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/04 14:29:03 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +97,19 @@ typedef struct s_cub
 	t_player	player;
 	t_raycast	raycast;
 
-	double	time;
-	double	old_time;
 
-	int	width;
-	int	height;
-	double	frame_time;
+	int			width;
+	int			height;
+	double		moveSpeed;
+	double		rotSpeed;
+	double		old_direction_x;
+	double		old_plane_x;
+	int			key_up;
+	int			key_down;
+	int			key_right;
+	int			key_left;
+	int			arrow_right;
+	int			arrow_left;
 }				t_cub;
 
 //			UTILS.c		//
@@ -159,4 +166,8 @@ void	clean_exit(t_cub *s);
 int		raycast(t_cub *s);
 void	init_raycast_mlx(t_cub *s);
 void	window(t_cub *s);
+void	rotation(t_cub *s);
+int		key_press(int key, t_cub *s);
+int		key_release(int key, t_cub *s);
+void	check_move(t_cub *s);
 #endif

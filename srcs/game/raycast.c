@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 07:45:14 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/04 12:17:43 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/04 14:29:50 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 void	init_raycast(t_cub *s)
 {
-	s->raycast.camera_x = 2 * s->raycast.x / s->width - 1;
+	s->raycast.camera_x = 2 * s->raycast.x / (double)s->width - 1;
 	s->raycast.raydir_x = s->player.direction_x + s->player.cam_plane_x * s->raycast.camera_x;
 	s->raycast.raydir_y = s->player.direction_y + s->player.cam_plane_y * s->raycast.camera_x;
 	s->raycast.map_x = s->player.position_x;
 	s->raycast.map_y = s->player.position_y;
 	s->raycast.deltadist_x = fabs(1 / s->raycast.raydir_x);
-	s->raycast.deltadist_y = fabs(1 / s->raycast.raydir_x);
+	s->raycast.deltadist_y = fabs(1 / s->raycast.raydir_y);
 	s->raycast.hit = 0;
 }
 
@@ -77,44 +77,50 @@ void	sky_floor_raycast(t_cub *s)
 		s->raycast.wall_dist = (s->raycast.map_x - s->player.position_x + (1 - s->raycast.step_x) / 2) / s->raycast.raydir_x;
 	else
 		s->raycast.wall_dist = (s->raycast.map_y - s->player.position_y + (1 - s->raycast.step_y) / 2) / s->raycast.raydir_y;
-	s->raycast.line_height = (long int)(s->raycast.wall_height / s->raycast.wall_dist);
-	s->raycast.draw_start = -s->raycast.line_height / 2 + s->raycast.wall_height / 2;
+	s->raycast.line_height = (long int)(s->height / s->raycast.wall_dist);
+	s->raycast.draw_start = -s->raycast.line_height / 2 + s->height / 2;
 	if(s->raycast.draw_start < 0)
 		s->raycast.draw_start = 0;
-	s->raycast.draw_end = s->raycast.line_height / 2 + s->raycast.wall_height / 2;
+	s->raycast.draw_end = s->raycast.line_height / 2 + s->height / 2;
 	if(s->raycast.draw_end >= s->height)
-		s->raycast.draw_end = s->raycast.wall_height - 1;
+		s->raycast.draw_end = s->height - 1;
 }
 
-void			raycast_draw(t_cub *s)
+void			draw_raycast(t_cub *s)
 {
 	int		i;
 
 	i = 0;
+
 	while (i < s->raycast.draw_start)
 	{
-		s->addr[i * s->width + (int)s->raycast.x] = s->data.ceil_a;
+		s->addr[i * s->line_length / 4 + s->raycast.x] = s->data.ceil_a;
+		i++;
+	}
+	while(i < s->raycast.draw_end)
+	{
+		s->addr[i * s->line_length / 4 + s->raycast.x] = 0x00FFFFFF;
 		i++;
 	}
 	i = s->raycast.draw_end;
-	while (i < s->height - 1)
+	while (i < s->height)
 	{
-		s->addr[i * s->width + (int)s->raycast.x] = s->data.floor_a;
+		s->addr[i * s->line_length / 4 + s->raycast.x] = s->data.floor_a;
 		i++;
 	}
 }
 
 int	raycast(t_cub *s)
 {
+	check_move(s);
 	s->raycast.x = 0;
-	s->raycast.wall_height = s->height / 1.5;
 	while(s->raycast.x < s->width)
 	{
 		init_raycast(s);
 		step_raycast(s);
 		hit_raycast(s);
 		sky_floor_raycast(s);
-		raycast_draw(s);
+		draw_raycast(s);
 		s->raycast.x++;
 	}
 	mlx_put_image_to_window(s->mlx, s->win, s->img, 0, 0);
