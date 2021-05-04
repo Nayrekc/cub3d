@@ -4,6 +4,8 @@ void	init_raycast_value(t_cub *s)
 {
 	s->player.position_x = s->data.spawn_x;
 	s->player.position_y = s->data.spawn_y;
+	s->width = s->data.resolution_x;
+	s->height = s->data.resolution_y;
 	s->player.direction_x = -1;
 	s->player.direction_y = 0;
 	s->player.cam_plane_x = 0;

@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:53 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/03 09:31:38 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/04 08:41:57 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,19 @@ typedef struct s_cub
 	t_data		data;
 	void		*mlx;
 	void		*win;
+	void		*img;
+	int			*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
 	t_player	player;
 	t_raycast	raycast;
 
 	double	time;
 	double	old_time;
 
-	double	width;
-	double	height;
+	int	width;
+	int	height;
 	double	frame_time;
 }				t_cub;
 
@@ -151,6 +156,7 @@ void	clean_exit(t_cub *s);
 
 //			GAME				//
 
-void	raycast(t_cub *s);
+int		raycast(t_cub *s);
 void	init_raycast_mlx(t_cub *s);
+void	window(t_cub *s);
 #endif

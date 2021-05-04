@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycast.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/04 07:45:14 by ketaouki          #+#    #+#             */
+/*   Updated: 2021/05/04 12:17:43 by ketaouki         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
+
 
 void	init_raycast(t_cub *s)
 {
@@ -37,20 +50,6 @@ void	step_raycast(t_cub *s)
 }
 
 
-// void			assign_side(t_cub *s)
-// {
-// 	if (s->raycast.side == 0)
-// 	{
-// 		if (s->raycast.map_x < s->player.position_x)
-// 			s->raycast.side = 1;
-// 	}
-// 	else
-// 	{
-// 		if (s->raycast.map_y< s->player.position_y)
-// 			s->raycast.side = 3;
-// 	}
-// }
-
 void	hit_raycast(t_cub *s)
 {
 	while(!s->raycast.hit)
@@ -65,42 +64,59 @@ void	hit_raycast(t_cub *s)
 		{
 			s->raycast.sidedist_y += s->raycast.deltadist_y;
 			s->raycast.map_y += s->raycast.step_y;
-			s->raycast.side = 2;
+			s->raycast.side = 1;
 		}
 		if (s->data.map[s->raycast.map_y][s->raycast.map_x] == '|')
 			s->raycast.hit = 1;
 	}
-	// assign_side(s);
 }
 
 void	sky_floor_raycast(t_cub *s)
 {
 	if(s->raycast.side == 0)
-		s->raycast.wall_dist =
-		(s->raycast.map_x - s->player.position_x + (1 - s->raycast.step_x) / 2) / s->raycast.raydir_x;
+		s->raycast.wall_dist = (s->raycast.map_x - s->player.position_x + (1 - s->raycast.step_x) / 2) / s->raycast.raydir_x;
 	else
-		s->raycast.wall_dist =
-		(s->raycast.map_y - s->player.position_y + (1 - s->raycast.step_y) / 2) / s->raycast.raydir_y;
+		s->raycast.wall_dist = (s->raycast.map_y - s->player.position_y + (1 - s->raycast.step_y) / 2) / s->raycast.raydir_y;
 	s->raycast.line_height = (long int)(s->raycast.wall_height / s->raycast.wall_dist);
 	s->raycast.draw_start = -s->raycast.line_height / 2 + s->raycast.wall_height / 2;
 	if(s->raycast.draw_start < 0)
 		s->raycast.draw_start = 0;
-	s->raycast.draw_end = -s->raycast.line_height / 2 + s->raycast.wall_height / 2;
-	if(s->raycast.draw_end < 0)
+	s->raycast.draw_end = s->raycast.line_height / 2 + s->raycast.wall_height / 2;
+	if(s->raycast.draw_end >= s->height)
 		s->raycast.draw_end = s->raycast.wall_height - 1;
 }
 
-void	raycast(t_cub *s)
+void			raycast_draw(t_cub *s)
+{
+	int		i;
+
+	i = 0;
+	while (i < s->raycast.draw_start)
+	{
+		s->addr[i * s->width + (int)s->raycast.x] = s->data.ceil_a;
+		i++;
+	}
+	i = s->raycast.draw_end;
+	while (i < s->height - 1)
+	{
+		s->addr[i * s->width + (int)s->raycast.x] = s->data.floor_a;
+		i++;
+	}
+}
+
+int	raycast(t_cub *s)
 {
 	s->raycast.x = 0;
-	init_raycast_mlx(s);
-	s->mlx = mlx_init();
-	s->win = mlx_new_window(s->mlx, s->data.resolution_x,
-	s->data.resolution_y, "Cub3D");
-
-	init_raycast(s);
-	step_raycast(s);
-	hit_raycast(s);
-	sky_floor_raycast(s);
-	mlx_loop(s->mlx);
+	s->raycast.wall_height = s->height / 1.5;
+	while(s->raycast.x < s->width)
+	{
+		init_raycast(s);
+		step_raycast(s);
+		hit_raycast(s);
+		sky_floor_raycast(s);
+		raycast_draw(s);
+		s->raycast.x++;
+	}
+	mlx_put_image_to_window(s->mlx, s->win, s->img, 0, 0);
+	return (1);
 }

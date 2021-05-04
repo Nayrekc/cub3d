@@ -1,11 +1,11 @@
-R 1920            1080
+R 400 400
 NO ./textures/btc.xpm
 SO ./textures/btc.xpm
 WE ./textures/int.xpm
 EA            ./textures/dollar.xpm
 S  ./textures/btc.xpm
 
-F 0 , 0 , 254
+F 0 , 0 , 255
 
 C 255 , 30 ,0
 

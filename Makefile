@@ -11,7 +11,7 @@ CFLAGS 			= 		-Wall -Wextra -Werror
 SRCS			=		main.c \
 						$(addprefix parser/, parse_data.c parse.c parse_color.c parse_resolution.c parse_path.c parse_map.c) \
 						$(addprefix utils/, exit.c utils.c) \
-						$(addprefix game/, init.c raycast.c) \
+						$(addprefix game/, window.c init.c raycast.c) \
 
 OBJS			= 		$(addprefix srcs/, $(SRCS:.c=.o))
 
