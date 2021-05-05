@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:53 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/04 14:29:03 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 13:06:56 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,4 +170,5 @@ void	rotation(t_cub *s);
 int		key_press(int key, t_cub *s);
 int		key_release(int key, t_cub *s);
 void	check_move(t_cub *s);
+void	initialize_dir_and_cam(t_cub *s);
 #endif
