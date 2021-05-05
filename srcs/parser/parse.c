@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/05 11:05:29 by ketaouki          #+#    #+#             */
+/*   Updated: 2021/05/05 11:05:30 by ketaouki         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
 int	data_full(t_cub *s)
@@ -13,19 +25,19 @@ int	data_full(t_cub *s)
 void	parse_argc(int argc, char **argv)
 {
 	if (argc < 2 || argc > 3)
-		error_exit_msg("Not a good format .Cub3d (--save) <map.cub>\n");
+		error_exit_msg("Not a good format ./Cub3d <map.cub> (--save)\n");
 	if (argc == 3)
 	{
-		if (ft_strncmp(argv[1], "--save", 7)
-			|| ft_strncmp(argv[2] + ft_strlen(argv[2]) - 4, ".cub", 5))
-			error_exit_msg("Not a good format .Cub3d (--save) <map.cub>\n");
-		if (!ft_strncmp(argv[1], "--save", 7))
+		if (ft_strncmp(argv[2], "--save", 7)
+			|| ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".cub", 5))
+			error_exit_msg("Not a good format ./Cub3d <map.cub> (--save)\n");
+		if (!ft_strncmp(argv[2], "--save", 7))
 			error_exit_msg("Not configured yet\n");
 	}
 	if (argc == 2)
 	{
 		if ((ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".cub", 5)))
-			error_exit_msg("Not a good format .Cub3d (--save) <map.cub>\n");
+			error_exit_msg("Not a good format ./Cub3d <map.cub> (--save)\n");
 	}
 }
 

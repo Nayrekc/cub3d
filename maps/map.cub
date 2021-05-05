@@ -1,4 +1,4 @@
-R 1920 1080
+R 400 400
 NO ./textures/btc.xpm
 SO ./textures/btc.xpm
 WE ./textures/int.xpm

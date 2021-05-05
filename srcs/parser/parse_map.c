@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:32 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/03 10:20:13 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 09:15:54 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	spawn_map(t_cub *s, char *line)
 				count++;
 				s->data.spawn_x = x;
 				s->data.spawn_y = y;
-				s->data.spawn = s->data.map[y][x];
-				//s->data.map[y][x] = '0'; change N by 0 maybe? 
 			}
 			x++;
 		}
