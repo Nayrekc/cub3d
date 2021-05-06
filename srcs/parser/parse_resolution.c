@@ -20,8 +20,17 @@ void	parse_data_reso(t_cub *s, char *line)
 		else if (ft_isdigit(line[s->index]) == 0 && line[s->index] != ' ' )
 			error_exit(s, line, "Error\nFormat x y");
 	}
+	parse_data_reso_max_min(s, line);
+}
+
+void	parse_data_reso_max_min(t_cub *s, char *line)
+{
 	if (s->data.resolution_x < 300)
 		error_exit(s, line, "Error\nToo small");
 	if (s->data.resolution_y < 300)
 		error_exit(s, line, "Error\nToo small");
+	if (s->data.resolution_x > 2560)
+		s->data.resolution_x = 2560;
+	if (s->data.resolution_y > 1440)
+		s->data.resolution_y = 1440;
 }

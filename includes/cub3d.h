@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:53 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/05 13:06:56 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/06 12:57:46 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct s_player
 	double	cam_plane_y;
 }				t_player;
 
-
 typedef struct	s_raycast
 {
 	double		raydir_x; //calcul de direction x du rayon
@@ -82,6 +81,24 @@ typedef struct	s_raycast
 	int			wall_height;
 }				t_raycast;
 
+typedef struct s_texture
+{
+	double		wall_x;
+	int			texture_x;
+	int			texture_y;
+	int			texture_width;
+	int			texture_height;
+	double		step;
+	double		texture_position;
+	int			texture_direction;
+
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+	void		*img;
+	int			*addr;
+}				t_texture;
+
 
 typedef struct s_cub
 {
@@ -96,8 +113,7 @@ typedef struct s_cub
 	int			endian;
 	t_player	player;
 	t_raycast	raycast;
-
-
+	t_texture	t;
 	int			width;
 	int			height;
 	double		moveSpeed;
@@ -137,6 +153,7 @@ void	clean_map(t_cub *s);
 
 //			PARSER_RESOLUTION.c		//
 void	parse_data_reso(t_cub *s, char *line);
+void	parse_data_reso_max_min(t_cub *s, char *line);
 //			PARSER_RESOLUTION.c		//
 
 //			PARSER_COLOR.C			//
@@ -161,14 +178,46 @@ void	error_exit_msg(char *str);
 void	clean_exit(t_cub *s);
 //			EXIT.C				//
 
-//			GAME				//
+//			MOVE.C				//
+void	move_front(t_cub *s);
+void	move_back(t_cub *s);
+void	move_right(t_cub *s);
+void	move_left(t_cub *s);
+//			MOVE.C				//
 
-int		raycast(t_cub *s);
-void	init_raycast_mlx(t_cub *s);
-void	window(t_cub *s);
-void	rotation(t_cub *s);
-int		key_press(int key, t_cub *s);
+//			MOVE_CAM.C			//
+void	move_cam_right(t_cub *s);
+void	move_cam_left(t_cub *s);
+//			MOVE_CAM.C			//
+
+//			KEY_GESTION.C		//
+int		red_cross(t_cub *s);
 int		key_release(int key, t_cub *s);
 void	check_move(t_cub *s);
+int		key_press(int key, t_cub *s);
+//			KEY_GESTION.C		//
+
+
+//			INIT.C				//
+void	init_raycast_value(t_cub *s);
 void	initialize_dir_and_cam(t_cub *s);
+void	init_raycast_mlx(t_cub *s);
+//			INIT.C				//
+
+//			WINDOW.C			//
+void	window(t_cub *s);
+//			WINDOW.C			//
+
+//			RAYCAST.C			//
+int		raycast(t_cub *s);
+void	draw_raycast(t_cub *s);
+void	sky_floor_raycast(t_cub *s);
+void	hit_raycast(t_cub *s);
+void	step_raycast(t_cub *s);
+void	init_raycast(t_cub *s);
+//			RAYCAST.C			//
+
+
+//			GAME				//
+
 #endif

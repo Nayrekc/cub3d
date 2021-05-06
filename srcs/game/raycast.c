@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 07:45:14 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/05 13:07:58 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/06 11:09:57 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,29 +90,6 @@ void	sky_floor_raycast(t_cub *s)
 	s->raycast.draw_end = s->raycast.line_height / 2 + s->height / 2;
 	if (s->raycast.draw_end >= s->height)
 		s->raycast.draw_end = s->height - 1;
-}
-
-void	draw_raycast(t_cub *s)
-{
-	int	i;
-
-	i = 0;
-	while (i < s->raycast.draw_start)
-	{
-		s->addr[i * s->line_length / 4 + s->raycast.x] = s->data.ceil_a;
-		i++;
-	}
-	while (i < s->raycast.draw_end)
-	{
-		s->addr[i * s->line_length / 4 + s->raycast.x] = 0x00FFFFFF;
-		i++;
-	}
-	i = s->raycast.draw_end;
-	while (i < s->height)
-	{
-		s->addr[i * s->line_length / 4 + s->raycast.x] = s->data.floor_a;
-		i++;
-	}
 }
 
 int	raycast(t_cub *s)

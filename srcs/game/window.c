@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 09:16:38 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/05 09:28:05 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/06 09:34:56 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	window(t_cub *s)
 	raycast(s);
 	mlx_hook(s->win, 2, 1L <<0, key_press, s);
 	mlx_hook(s->win, 3, 1L <<0, key_release, s);
+	mlx_hook(s->win, 17, 1L << 17, red_cross, s);
 	mlx_loop_hook(s->mlx, raycast, s);
 	mlx_loop(s->mlx);
 }

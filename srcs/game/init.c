@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 09:24:46 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/05 13:18:33 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/06 09:53:11 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	initialize_dir_and_cam(t_cub *s)
 	s->player.direction_y = s->old_direction_x * sin(-rotation)
 		+ s->player.direction_y * cos(-rotation);
 	s->old_plane_x = s->player.cam_plane_x;
-	s->player.cam_plane_x =  s->player.cam_plane_x * cos(-rotation)
-		-  s->player.cam_plane_y * sin(-rotation);
+	s->player.cam_plane_x = s->player.cam_plane_x * cos(-rotation)
+		- s->player.cam_plane_y * sin(-rotation);
 	 s->player.cam_plane_y = s->old_plane_x * sin(-rotation)
-		+  s->player.cam_plane_y * cos(-rotation);
+		+ s->player.cam_plane_y * cos(-rotation);
 }
 
 void	init_raycast_mlx(t_cub *s)
