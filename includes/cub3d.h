@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:53 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/06 12:57:46 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/10 13:10:49 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ typedef struct s_texture
 	double		step;
 	double		texture_position;
 	int			texture_direction;
-
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
@@ -218,6 +217,8 @@ void	init_raycast(t_cub *s);
 //			RAYCAST.C			//
 
 
+
+void	init_texture_data_no(t_cub *s);
 //			GAME				//
 
 #endif

@@ -1,4 +1,4 @@
-R 55555 400
+R 500 500
 NO ./textures/btc.xpm
 SO ./textures/btc.xpm
 WE ./textures/int.xpm

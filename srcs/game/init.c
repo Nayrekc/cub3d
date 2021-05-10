@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 09:24:46 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/06 09:53:11 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/10 13:26:59 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ void	init_raycast_value(t_cub *s)
 	s->player.cam_plane_y = 0.66;
 	s->moveSpeed = 0.05;
 	s->rotSpeed = 0.03;
+}
+
+void	init_texture_data_no(t_cub *s)
+{
+	s->t.img = mlx_xpm_file_to_image(s->mlx, s->data.texture_SO_path, &s->t.texture_width, &s->t.texture_height);
+	s->t.addr = (int *)mlx_get_data_addr(s->t.img, &s->bits_per_pixel, &s->t.line_length, &s->t.endian);
 }
 
 void	initialize_dir_and_cam(t_cub *s)

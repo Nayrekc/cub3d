@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 07:45:14 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/06 11:09:57 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/10 13:10:54 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int	raycast(t_cub *s)
 {
 	check_move(s);
 	s->raycast.x = 0;
+	init_texture_data_no(s);
 	while (s->raycast.x < s->width)
 	{
 		init_raycast(s);
