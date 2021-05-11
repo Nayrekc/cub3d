@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 07:45:14 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/11 13:51:55 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/11 14:28:00 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	raycast(t_cub *s)
 		step_raycast(s);
 		hit_raycast(s);
 		sky_floor_raycast(s);
-		check_dir(s);
+		check_wall_pos(s);
 		draw_raycast(s);
 		s->raycast.x++;
 	}

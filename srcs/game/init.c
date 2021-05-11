@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 09:24:46 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/11 12:25:54 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/11 14:23:42 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,3 @@ void	init_raycast_mlx(t_cub *s)
 	init_raycast_value(s);
 	initialize_dir_and_cam(s);
 }
-
-
-

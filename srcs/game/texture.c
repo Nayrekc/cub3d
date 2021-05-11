@@ -6,14 +6,13 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 12:26:01 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/11 13:52:46 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/11 14:31:16 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../includes/cub3d.h"
 
-void init_texture_NO(t_cub *s)
+void	init_texture_NO(t_cub *s)
 {
 	s->t_no.img = mlx_xpm_file_to_image(s->mlx, s->data.texture_NO_path,
 			&s->t_no.texture_width, &s->t_no.texture_height);
@@ -51,22 +50,4 @@ void	init_texture(t_cub *s)
 	init_texture_WE(s);
 	init_texture_NO(s);
 	init_texture_SO(s);
-}
-
-void	check_dir(t_cub *s)
-{
-	if (s->raycast.side == 1)
-	{
-		if (s->raycast.map_y > s->player.position_y)
-			s->t = s->t_so;
-		if (s->raycast.map_y < s->player.position_y)
-			s->t = s->t_no;
-	}
-	else
-	{
-		if (s->raycast.map_x > s->player.position_x)
-			s->t = s->t_ea;
-		if (s->raycast.map_x < s->player.position_x)
-			s->t = s->t_we;
-	}
 }

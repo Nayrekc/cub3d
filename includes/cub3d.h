@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:53 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/11 13:47:40 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/11 14:31:45 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,10 @@ typedef struct	s_texture_init
 typedef struct s_texture
 {
 	double		wall_x;
-	int			texture_x;
-	int			texture_y;
+	int			tex_x;
+	int			tex_y;
 	double		step;
-	double		texture_position;
+	double		position;
 	int			texture_direction;
 }				t_texture;
 
@@ -219,17 +219,26 @@ void	window(t_cub *s);
 
 //			RAYCAST.C			//
 int		raycast(t_cub *s);
-void	draw_raycast(t_cub *s);
 void	sky_floor_raycast(t_cub *s);
 void	hit_raycast(t_cub *s);
 void	step_raycast(t_cub *s);
 void	init_raycast(t_cub *s);
 //			RAYCAST.C			//
 
-
-
+//			TEXTURE.C			//
+void	init_texture_NO(t_cub *s);
+void	init_texture_SO(t_cub *s);
+void	init_texture_WE(t_cub *s);
+void	init_texture_EA(t_cub *s);
 void	init_texture(t_cub *s);
-void	check_dir(t_cub *s);
+//			TEXTURE.C			//
+
+//			DRAW.C				//
+void	draw_raycast(t_cub *s);
+void	draw_wall(t_cub *s);
+void	check_wall_pos(t_cub *s);
+//			DRAW.C				//
+
 //			GAME				//
 
 #endif
