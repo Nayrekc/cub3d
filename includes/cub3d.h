@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:53 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/10 13:10:49 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/11 13:47:40 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,21 +81,26 @@ typedef struct	s_raycast
 	int			wall_height;
 }				t_raycast;
 
+typedef struct	s_texture_init
+{
+	int		texture_width;
+	int		texture_height;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	void	*img;
+	int		*addr;
+}				t_texture_init;
+
+
 typedef struct s_texture
 {
 	double		wall_x;
 	int			texture_x;
 	int			texture_y;
-	int			texture_width;
-	int			texture_height;
 	double		step;
 	double		texture_position;
 	int			texture_direction;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-	void		*img;
-	int			*addr;
 }				t_texture;
 
 
@@ -112,7 +117,12 @@ typedef struct s_cub
 	int			endian;
 	t_player	player;
 	t_raycast	raycast;
-	t_texture	t;
+	t_texture		te;
+	t_texture_init	t;
+	t_texture_init	t_no;
+	t_texture_init	t_ea;
+	t_texture_init	t_we;
+	t_texture_init	t_so;
 	int			width;
 	int			height;
 	double		moveSpeed;
@@ -218,7 +228,8 @@ void	init_raycast(t_cub *s);
 
 
 
-void	init_texture_data_no(t_cub *s);
+void	init_texture(t_cub *s);
+void	check_dir(t_cub *s);
 //			GAME				//
 
 #endif

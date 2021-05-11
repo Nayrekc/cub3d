@@ -1,9 +1,9 @@
-R 500 500
-NO ./textures/btc.xpm
-SO ./textures/btc.xpm
+R 1920 1080
+NO ./textures/wood.xpm
+SO ./textures/redbrick.xpm
 WE ./textures/int.xpm
-EA            ./textures/dollar.xpm
-S  ./textures/btc.xpm
+EA            ./textures/pillar.xpm
+S  ./textures/purplestone.xpm
 
 F 0 , 0 , 255
 
