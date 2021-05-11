@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 09:24:46 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/10 13:56:55 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/11 11:05:56 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_raycast_value(t_cub *s)
 	s->width = s->data.resolution_x;
 	s->height = s->data.resolution_y;
 	s->player.direction_x = -1;
-	s->player.cam_plane_y = 0.66;
+	s->player.cam_plane_y = -0.66;
 	s->moveSpeed = 0.05;
 	s->rotSpeed = 0.03;
 }
