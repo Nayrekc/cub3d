@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:32 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/05 09:15:54 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/12 08:37:53 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,10 @@ void	ft_check_map(t_cub *s, char *line, int y, int x)
 		return ;
 	}
 	if (s->data.map[y][x] == '2')
+	{
 		s->data.map[y][x] = '$';
+		s->sprite.nb_sprite++;
+	}
 	ft_check_map(s, line, y + 1, x);
 	ft_check_map(s, line, y - 1, x);
 	ft_check_map(s, line, y, x - 1);

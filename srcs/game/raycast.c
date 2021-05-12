@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 07:45:14 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/11 14:28:00 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/12 09:28:52 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	sky_floor_raycast(t_cub *s)
 	else
 		s->raycast.wall_dist = (s->raycast.map_y - s->player.position_y
 				+ (1 - s->raycast.step_y) / 2) / s->raycast.raydir_y;
-	s->raycast.line_height = (long int)(s->height / s->raycast.wall_dist);
+	s->raycast.line_height = (int)(s->height / s->raycast.wall_dist);
 	s->raycast.draw_start = -s->raycast.line_height / 2 + s->height / 2;
 	if (s->raycast.draw_start < 0)
 		s->raycast.draw_start = 0;
@@ -107,6 +107,8 @@ int	raycast(t_cub *s)
 		draw_raycast(s);
 		s->raycast.x++;
 	}
+	mlx_clear_window(s->mlx, s->win);
 	mlx_put_image_to_window(s->mlx, s->win, s->img, 0, 0);
+	mlx_do_sync(s->mlx);
 	return (1);
 }

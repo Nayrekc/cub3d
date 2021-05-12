@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 09:24:46 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/11 14:23:42 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/12 09:44:26 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	init_raycast_value(t_cub *s)
 {
 	s->player.position_x = s->data.spawn_x;
 	s->player.position_y = s->data.spawn_y;
-	s->width = s->data.resolution_x;
-	s->height = s->data.resolution_y;
 	s->player.direction_x = -1;
 	s->player.cam_plane_y = -0.66;
 	s->moveSpeed = 0.05;

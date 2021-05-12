@@ -6,7 +6,7 @@ HEADERS			=		includes/cub3d.h
 
 CC				=		gcc
 
-CFLAGS 			= 		-Wall -Wextra -Werror
+CFLAGS 			= 		-Wall -Wextra -Werror -g3
 
 SRCS			=		main.c \
 						$(addprefix parser/, parse_data.c parse.c parse_color.c parse_resolution.c parse_path.c parse_map.c) \

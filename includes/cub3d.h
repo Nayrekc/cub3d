@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:53 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/11 14:31:45 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/12 09:40:53 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,26 @@ typedef struct s_texture
 	int			texture_direction;
 }				t_texture;
 
+typedef struct s_sprite
+{
+	int		i;
+	int		nb_sprite;
+	int		*tab_dist;
+	double	x;
+	double	y;
+	double	inv_det;
+	double	transform_x;
+	double	transform_y;
+	double	screen_x;
+	int		height;
+	int		width;
+	int		draw_start_x;
+	int		draw_start_y;
+	int		draw_end_x;
+	int		draw_end_y;
+	int		stripe;
+}				t_sprite;
+
 
 typedef struct s_cub
 {
@@ -123,6 +143,7 @@ typedef struct s_cub
 	t_texture_init	t_ea;
 	t_texture_init	t_we;
 	t_texture_init	t_so;
+	t_sprite	sprite;
 	int			width;
 	int			height;
 	double		moveSpeed;
@@ -214,6 +235,7 @@ void	init_raycast_mlx(t_cub *s);
 //			INIT.C				//
 
 //			WINDOW.C			//
+void	size_screen(t_cub *s);
 void	window(t_cub *s);
 //			WINDOW.C			//
 

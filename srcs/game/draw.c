@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 11:10:09 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/11 14:31:30 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/12 08:19:28 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	draw_wall(t_cub *s)
 	s->te.step = 1.0 * s->t.texture_height / s->raycast.line_height;
 	s->te.position = (s->raycast.draw_start - s->height / 2
 			+ s->raycast.line_height / 2) * s->te.step;
-	s->te.tex_x = s->t.line_length / 4 - 1 - s->te.tex_x;
+	s->te.tex_x = s->t.line_length / 4 - s->te.tex_x - 1;
 	while (s->raycast.draw_start < s->raycast.draw_end)
 	{
 		s->te.tex_y = (int)s->te.position & (s->t.texture_height - 1);

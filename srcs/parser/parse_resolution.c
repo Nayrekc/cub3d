@@ -29,8 +29,4 @@ void	parse_data_reso_max_min(t_cub *s, char *line)
 		error_exit(s, line, "Error\nToo small");
 	if (s->data.resolution_y < 300)
 		error_exit(s, line, "Error\nToo small");
-	if (s->data.resolution_x > 2560)
-		s->data.resolution_x = 2560;
-	if (s->data.resolution_y > 1440)
-		s->data.resolution_y = 1440;
 }
