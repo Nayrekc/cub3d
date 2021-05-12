@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 08:56:05 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/12 09:13:15 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/12 12:35:59 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	lol(t_cub *s)
 {
 	while(s->sprite.i < s->sprite.nb_sprite)
 	{
-      //translate sprite position to relative to camera
 		s->sprite.x = sprite[spriteOrder[i]].x - s->player.position_x;
 		s->sprite.y = sprite[spriteOrder[i]].y - s->player.position_y;
 
@@ -26,8 +25,7 @@ void	lol(t_cub *s)
 		s->sprite.transform_x = s->sprite.inv_det * (s->player.direction_y
 			* s->sprite.x - s->player.direction_x * s->sprite.y);
 		s->sprite.transform_y = s->sprite.inv_det * (-s->player.cam_plane_y
-			* s->sprite.x + s->player.cam_plane_x * s->sprite.y); //this is actually the depth inside the screen, that what Z is in 3D
-
+			* s->sprite.x + s->player.cam_plane_x * s->sprite.y);
 		s->sprite.screen_x = (s->width / 2) *
 			(1 + s->sprite.transform_x / s->sprite.transform_y);
 
