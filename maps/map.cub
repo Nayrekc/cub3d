@@ -3,7 +3,7 @@ NO ./textures/int.xpm
 SO ./textures/wood.xpm
 WE ./textures/purplestone.xpm
 EA ./textures/redbrick.xpm
-S ./textures/pillar.xpm
+S ./textures/barrel.xpm
 
 F 0 , 0 , 255
 

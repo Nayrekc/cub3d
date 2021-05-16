@@ -61,24 +61,24 @@ typedef struct s_player
 
 typedef struct	s_raycast
 {
-	double		raydir_x; //calcul de direction x du rayon
-	double		raydir_y; //calcul de direction y du rayon
-	double		camera_x; //point x sur la plan camera : Gauche ecran = -1, milieu = 0, droite = 1
-	int			map_x; // coordonée x du carré dans lequel est pos
-	int			map_y; // coordonnée y du carré dans lequel est pos
-	double		sidedist_x; //distance que le rayon parcours jusqu'au premier point d'intersection vertical (=un coté x)
-	double		sidedist_y; //distance que le rayon parcours jusqu'au premier point d'intersection horizontal (= un coté y)
-	double		deltadist_x; //distance que rayon parcours entre chaque point d'intersection vertical
-	double		deltadist_y; //distance que le rayon parcours entre chaque point d'intersection horizontal
-	int			step_x; // -1 si doit sauter un carre dans direction x negative, 1 dans la direction x positive
-	int			step_y; // -1 si doit sauter un carre dans la direction y negative, 1 dans la direction y positive
-	int			hit; // 1 si un mur a ete touche, 0 sinon
-	int			side; // 0 si c'est un cote x qui est touche (vertical), 1 si un cote y (horizontal)
-	double		wall_dist; // distance du joueur au mur
-	int			line_height; //hauteur de la ligne a dessiner
-	int			draw_start; //position de debut ou il faut dessiner
-	int			draw_end; //position de fin ou il faut dessiner
-	int			x; //permet de parcourir tous les rayons
+	double		raydir_x;
+	double		raydir_y;
+	double		camera_x;
+	int			map_x;
+	int			map_y;
+	double		sidedist_x;
+	double		sidedist_y;
+	double		deltadist_x;
+	double		deltadist_y;
+	int			step_x;
+	int			step_y;
+	int			hit;
+	int			side;
+	double		wall_dist;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	int			x;
 	int			wall_height;
 }				t_raycast;
 
@@ -92,7 +92,6 @@ typedef struct	s_texture_init
 	void	*img;
 	int		*addr;
 }				t_texture_init;
-
 
 typedef struct s_texture
 {
@@ -133,7 +132,6 @@ typedef struct s_sprite
 	int		text_x;
 	int		text_y;
 }				t_sprite;
-
 
 typedef struct s_cub
 {
