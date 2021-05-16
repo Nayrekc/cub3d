@@ -97,6 +97,7 @@ int	raycast(t_cub *s)
 	check_move(s);
 	s->raycast.x = 0;
 	init_texture(s);
+	s->sprite.buffer = (double *)malloc(sizeof(double) * s->width);
 	while (s->raycast.x < s->width)
 	{
 		init_raycast(s);
@@ -105,10 +106,16 @@ int	raycast(t_cub *s)
 		sky_floor_raycast(s);
 		check_wall_pos(s);
 		draw_raycast(s);
+		s->sprite.buffer[s->raycast.x] = s->raycast.wall_dist;
 		s->raycast.x++;
 	}
+	sprite(s);
 	mlx_clear_window(s->mlx, s->win);
 	mlx_put_image_to_window(s->mlx, s->win, s->img, 0, 0);
 	mlx_do_sync(s->mlx);
+	free(s->sprite.buffer);
+	free(s->sprite.dist);
+	free(s->sprite_x_y);
+	free(s->sprite.order);
 	return (1);
 }

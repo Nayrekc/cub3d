@@ -57,7 +57,7 @@ static char	**ft_d(char *s, char c, char **str, int line)
 		str[k][y] = '\0';
 		k++;
 	}
-	str[k] = 0;
+	str[k]= 0;
 	return (str);
 }
 

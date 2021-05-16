@@ -46,6 +46,7 @@ typedef struct s_data
 	char	spawn;
 	int		spawn_x;
 	int		spawn_y;
+	int		nb_sprite;
 }				t_data;
 
 typedef struct s_player
@@ -103,11 +104,18 @@ typedef struct s_texture
 	int			texture_direction;
 }				t_texture;
 
+typedef struct s_sprite_x_y
+{
+	double		x;
+	double		y;
+
+}				t_sprites_x_y;
+
 typedef struct s_sprite
 {
 	int		i;
-	int		nb_sprite;
-	int		*tab_dist;
+	double	*dist;
+	int		*order;
 	double	x;
 	double	y;
 	double	inv_det;
@@ -121,6 +129,9 @@ typedef struct s_sprite
 	int		draw_end_x;
 	int		draw_end_y;
 	int		stripe;
+	double	*buffer;
+	int		text_x;
+	int		text_y;
 }				t_sprite;
 
 
@@ -143,7 +154,9 @@ typedef struct s_cub
 	t_texture_init	t_ea;
 	t_texture_init	t_we;
 	t_texture_init	t_so;
+	t_texture_init	t_sprite;
 	t_sprite	sprite;
+	t_sprite	*sprite_x_y;
 	int			width;
 	int			height;
 	double		moveSpeed;
@@ -261,6 +274,11 @@ void	draw_wall(t_cub *s);
 void	check_wall_pos(t_cub *s);
 //			DRAW.C				//
 
-//			GAME				//
+//			SPRITE				//
+void	sprite(t_cub *s);
+void	init_sprite_2(t_cub *s);
+void	init_texture_sprite(t_cub *s);
+//			SPRITE				//
+
 
 #endif

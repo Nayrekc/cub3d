@@ -79,7 +79,7 @@ void	ft_check_map(t_cub *s, char *line, int y, int x)
 	if (s->data.map[y][x] == '2')
 	{
 		s->data.map[y][x] = '$';
-		s->sprite.nb_sprite++;
+		s->data.nb_sprite++;
 	}
 	ft_check_map(s, line, y + 1, x);
 	ft_check_map(s, line, y - 1, x);
