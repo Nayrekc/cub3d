@@ -17,7 +17,6 @@ void    get_position_sprite(t_cub *s)
 	int i;
 
 	y = 0;
-	x = 0;
 	i = 0;
 	init_variable_sprite(s);
     while(s->data.map[y])
@@ -59,23 +58,23 @@ void	sprite_order(t_cub *s)
 	int		i;
 	int		j;
 	double	tmp;
+	int		tmp_order;
 
 	i = 0;
 	while (i < s->data.nb_sprite)
 	{
-		j = 0;
-		while(j < s->data.nb_sprite)
+		j = -1;
+		while(++j < s->data.nb_sprite)
 		{
 			if (s->sprite.dist[j] < s->sprite.dist[j + 1])
 			{
 				tmp = s->sprite.dist[j];
 				s->sprite.dist[j] = s->sprite.dist[j + 1];
 				s->sprite.dist[j + 1] = tmp;
-				tmp = s->sprite.order[j];
+				tmp_order = s->sprite.order[j];
 				s->sprite.order[j] = s->sprite.order[j + 1];
-				s->sprite.order[j + 1] = (int)tmp;
+				s->sprite.order[j + 1] = tmp_order;
 			}
-			j++;
 		}
 		i++;	
 	}
