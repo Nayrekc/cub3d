@@ -58,3 +58,11 @@ void	clean_exit(t_cub *s)
 	}
 	exit(0);
 }
+
+void	free_sprite(t_cub *s)
+{
+	free(s->sprite.buffer);
+	free(s->sprite.dist);
+	free(s->sprite_x_y);
+	free(s->sprite.order);
+}

@@ -217,6 +217,7 @@ void	parse_data_path_s(t_cub *s, char *line);
 void	error_exit(t_cub *s, char *line, char *str);
 void	error_exit_msg(char *str);
 void	clean_exit(t_cub *s);
+void	free_sprite(t_cub *s);
 //			EXIT.C				//
 
 //			MOVE.C				//

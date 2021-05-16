@@ -2,11 +2,17 @@
 
 void    init_variable_sprite(t_cub *s)
 {
-    if(!(s->sprite.order = (int *)ft_calloc(s->data.nb_sprite, sizeof(int))))
+	s->sprite.order = (int *)ft_calloc(s->data.nb_sprite, sizeof(int));
+    if(s->sprite.order == NULL)
 		clean_exit(s);
-	if(!(s->sprite_x_y = (t_sprite *)ft_calloc(s->data.nb_sprite, sizeof(t_sprite))))
+	s->sprite_x_y = (t_sprite *)ft_calloc(s->data.nb_sprite, sizeof(t_sprite));	
+	if(s->sprite_x_y == NULL)
 		clean_exit(s);
-	if(!(s->sprite.dist = (double *)ft_calloc(s->data.nb_sprite, sizeof(t_sprite))))
+	s->sprite.dist = (double *)ft_calloc(s->data.nb_sprite, sizeof(t_sprite));	
+	if(s->sprite.dist == NULL)
+		clean_exit(s);
+	s->sprite.buffer = (double *)malloc(sizeof(double) * s->width);
+	if (s->sprite.buffer == NULL)	
 		clean_exit(s);
 }
 
