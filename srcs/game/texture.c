@@ -51,5 +51,4 @@ void	init_texture(t_cub *s)
 	init_texture_NO(s);
 	init_texture_SO(s);
 	init_texture_sprite(s);
-	init_sprite_2(s);
 }

@@ -274,10 +274,22 @@ void	draw_wall(t_cub *s);
 void	check_wall_pos(t_cub *s);
 //			DRAW.C				//
 
-//			SPRITE				//
-void	sprite(t_cub *s);
-void	init_sprite_2(t_cub *s);
+//			SPRITE_INIT.C		//
+
+void    init_variable_sprite(t_cub *s);
+void    get_position_sprite(t_cub *s);
 void	init_texture_sprite(t_cub *s);
+void	sprite_dist(t_cub *s);
+void	sprite_order(t_cub *s);
+
+//			SPRITE_INIT.C		//
+
+//			SPRITE				//
+void	sprite_calcul(t_cub *s, int i);
+void	sprite_calcul_2(t_cub *s);
+void	sprite_aff(t_cub *s);
+void	sprite_aff_2(t_cub *s);
+void	sprite(t_cub *s);
 //			SPRITE				//
 
 

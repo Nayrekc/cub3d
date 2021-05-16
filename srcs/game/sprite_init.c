@@ -19,6 +19,7 @@ void    get_position_sprite(t_cub *s)
 	y = 0;
 	x = 0;
 	i = 0;
+	init_variable_sprite(s);
     while(s->data.map[y])
 	{
 		x = 0;
@@ -33,6 +34,50 @@ void    get_position_sprite(t_cub *s)
 			x++;
 		}
 		y++;
+	}
+}
+
+void	sprite_dist(t_cub *s)
+{
+	int		i;
+	
+	i = 0;
+	while (i < s->data.nb_sprite)
+	{
+		s->sprite.order[i] = i;
+		s->sprite.dist[i] = ((s->player.position_x - s->sprite_x_y[i].x)
+			* (s->player.position_x - s->sprite_x_y[i].x)
+				+ (s->player.position_y - s->sprite_x_y[i].y) 
+				* (s->player.position_y - s->sprite_x_y[i].y));
+		i++;
+	}
+	sprite_order(s);
+}
+
+void	sprite_order(t_cub *s)
+{
+	int		i;
+	int		j;
+	double	tmp;
+
+	i = 0;
+	while (i < s->data.nb_sprite)
+	{
+		j = 0;
+		while(j < s->data.nb_sprite)
+		{
+			if (s->sprite.dist[j] < s->sprite.dist[j + 1])
+			{
+				tmp = s->sprite.dist[j];
+				s->sprite.dist[j] = s->sprite.dist[j + 1];
+				s->sprite.dist[j + 1] = tmp;
+				tmp = s->sprite.order[j];
+				s->sprite.order[j] = s->sprite.order[j + 1];
+				s->sprite.order[j + 1] = (int)tmp;
+			}
+			j++;
+		}
+		i++;	
 	}
 }
 

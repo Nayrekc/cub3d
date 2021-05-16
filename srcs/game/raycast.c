@@ -94,6 +94,7 @@ void	sky_floor_raycast(t_cub *s)
 
 int	raycast(t_cub *s)
 {
+	get_position_sprite(s);
 	check_move(s);
 	s->raycast.x = 0;
 	init_texture(s);
