@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 07:45:14 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/12 09:28:52 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/17 08:24:26 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ void	sky_floor_raycast(t_cub *s)
 		s->raycast.draw_start = 0;
 	s->raycast.draw_end = s->raycast.line_height / 2 + s->height / 2;
 	if (s->raycast.draw_end >= s->height)
+		s->raycast.draw_end = s->height - 1;
+	if (s->raycast.draw_end < 0)
 		s->raycast.draw_end = s->height - 1;
 }
 

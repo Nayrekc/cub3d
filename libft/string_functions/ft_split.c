@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 14:39:20 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/04/19 12:43:36 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/17 08:26:22 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static char	**ft_d(char *s, char c, char **str, int line)
 		str[k][y] = '\0';
 		k++;
 	}
-	str[k]= 0;
+	str[k] = 0;
 	return (str);
 }
 
