@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:32 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/17 08:08:57 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/17 08:53:06 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	spawn_map(t_cub *s, char *line)
 		y++;
 	}
 	if (count == 0 || count > 1)
-		error_exit(s, line, "Error\nSpawn\n");
+		error_exit(s, line, "Error\nIn the map format\n");
 }
 
 void	clean_map(t_cub *s)
