@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:53 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/17 10:11:53 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/17 10:25:02 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,7 @@ typedef struct s_cub
 	int					key_left;
 	int					arrow_right;
 	int					arrow_left;
+	int					save;
 }				t_cub;
 
 //			UTILS.c		//
@@ -176,7 +177,7 @@ int		ft_atoi(t_cub *s, const char *str);
 void	init_structure(t_cub *s);
 
 //			PARSER					//
-void	parse_argc(int argc, char **argv);
+void	parse_argc(t_cub *s, int argc, char **argv);
 void	parse_file(t_cub *s, char *file);
 void	parse_data(t_cub *s, int fd);
 void	parse_type(t_cub *s, char *line);
@@ -212,6 +213,7 @@ void	error_exit(t_cub *s, char *line, char *str);
 void	error_exit_msg(char *str);
 void	clean_exit(t_cub *s);
 void	free_sprite(t_cub *s);
+void	bmp(t_cub *s);
 
 //			MOVE.C				//
 void	move_front(t_cub *s);

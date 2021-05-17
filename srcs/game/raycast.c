@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 07:45:14 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/17 08:24:26 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/17 13:53:53 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ int	raycast(t_cub *s)
 		s->raycast.x++;
 	}
 	sprite(s);
+	if (s->save == 1)
+		bmp(s);
 	mlx_clear_window(s->mlx, s->win);
 	mlx_put_image_to_window(s->mlx, s->win, s->img, 0, 0);
 	mlx_do_sync(s->mlx);

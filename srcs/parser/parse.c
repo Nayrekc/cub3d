@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 11:05:29 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/17 08:35:04 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/17 10:18:53 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	data_full(t_cub *s)
 	return (0);
 }
 
-void	parse_argc(int argc, char **argv)
+void	parse_argc(t_cub *s, int argc, char **argv)
 {
 	if (argc < 2 || argc > 3)
 		error_exit_msg("Not a good format ./Cub3d <map.cub> (--save)\n");
@@ -32,7 +32,7 @@ void	parse_argc(int argc, char **argv)
 			|| ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".cub", 5))
 			error_exit_msg("Not a good format ./Cub3d <map.cub> (--save)\n");
 		if (!ft_strncmp(argv[2], "--save", 7))
-			error_exit_msg("Not configured yet\n");
+			s->save = 1;
 	}
 	if (argc == 2)
 	{

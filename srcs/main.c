@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:51 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/17 08:35:14 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/17 13:53:44 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	main(int argc, char **argv)
 	int		y;
 
 	y = 0;
-	parse_argc(argc, argv);
 	init_structure(&s);
+	parse_argc(&s, argc, argv);
 	parse_file(&s, argv[1]);
 	while (s.data.map[y])
 	{
