@@ -6,7 +6,7 @@
 /*   By: ketaouki <ketaouki@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:36:53 by ketaouki          #+#    #+#             */
-/*   Updated: 2021/05/12 09:40:53 by ketaouki         ###   ########lyon.fr   */
+/*   Updated: 2021/05/17 10:11:53 by ketaouki         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_player
 	double	cam_plane_y;
 }				t_player;
 
-typedef struct	s_raycast
+typedef struct s_raycast
 {
 	double		raydir_x;
 	double		raydir_y;
@@ -82,7 +82,7 @@ typedef struct	s_raycast
 	int			wall_height;
 }				t_raycast;
 
-typedef struct	s_texture_init
+typedef struct s_texture_init
 {
 	int		texture_width;
 	int		texture_height;
@@ -135,47 +135,45 @@ typedef struct s_sprite
 
 typedef struct s_cub
 {
-	int			index;
-	t_data		data;
-	void		*mlx;
-	void		*win;
-	void		*img;
-	int			*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-	t_player	player;
-	t_raycast	raycast;
-	t_texture		te;
-	t_texture_init	t;
-	t_texture_init	t_no;
-	t_texture_init	t_ea;
-	t_texture_init	t_we;
-	t_texture_init	t_so;
-	t_texture_init	t_sprite;
-	t_sprite	sprite;
-	t_sprite	*sprite_x_y;
-	int			width;
-	int			height;
-	double		moveSpeed;
-	double		rotSpeed;
-	double		old_direction_x;
-	double		old_plane_x;
-	int			key_up;
-	int			key_down;
-	int			key_right;
-	int			key_left;
-	int			arrow_right;
-	int			arrow_left;
+	int					index;
+	t_data				data;
+	void				*mlx;
+	void				*win;
+	void				*img;
+	int					*addr;
+	int					bits_per_pixel;
+	int					line_length;
+	int					endian;
+	t_player			player;
+	t_raycast			raycast;
+	t_texture			te;
+	t_texture_init		t;
+	t_texture_init		t_no;
+	t_texture_init		t_ea;
+	t_texture_init		t_we;
+	t_texture_init		t_so;
+	t_texture_init		t_sprite;
+	t_sprite			sprite;
+	t_sprite			*sprite_x_y;
+	int					width;
+	int					height;
+	double				moveSpeed;
+	double				rotSpeed;
+	double				old_direction_x;
+	double				old_plane_x;
+	int					key_up;
+	int					key_down;
+	int					key_right;
+	int					key_left;
+	int					arrow_right;
+	int					arrow_left;
 }				t_cub;
 
 //			UTILS.c		//
 int		ft_atoi(t_cub *s, const char *str);
-//			UTILS		//
 
 //			MAIN.C					//
 void	init_structure(t_cub *s);
-//			MAIN.C					//
 
 //			PARSER					//
 void	parse_argc(int argc, char **argv);
@@ -184,7 +182,6 @@ void	parse_data(t_cub *s, int fd);
 void	parse_type(t_cub *s, char *line);
 int		data_full(t_cub *s);
 void	parse_data_map(t_cub *s, char *line);
-//			PARSER					//
 
 //			PARSER_MAP.C			//
 void	do_map(t_cub *s, char *line);
@@ -195,7 +192,6 @@ void	clean_map(t_cub *s);
 //			PARSER_RESOLUTION.c		//
 void	parse_data_reso(t_cub *s, char *line);
 void	parse_data_reso_max_min(t_cub *s, char *line);
-//			PARSER_RESOLUTION.c		//
 
 //			PARSER_COLOR.C			//
 void	parse_data_floor(t_cub *s, char *line);
@@ -203,7 +199,6 @@ void	parse_data_ceil(t_cub *s, char *line);
 void	parse_data_color_add(t_cub *s, char *line, int state);
 void	parse_data_color_ceil(t_cub *s, char *line);
 void	parse_data_color_floor(t_cub *s, char *line);
-//			PARSER_COLOR.C			//
 
 //			PARSER_PATH.C			//
 void	parse_data_path_no(t_cub *s, char *line);
@@ -211,45 +206,37 @@ void	parse_data_path_so(t_cub *s, char *line);
 void	parse_data_path_we(t_cub *s, char *line);
 void	parse_data_path_ea(t_cub *s, char *line);
 void	parse_data_path_s(t_cub *s, char *line);
-//			PARSER_PATH.C			//
 
 //			EXIT.C				//
 void	error_exit(t_cub *s, char *line, char *str);
 void	error_exit_msg(char *str);
 void	clean_exit(t_cub *s);
 void	free_sprite(t_cub *s);
-//			EXIT.C				//
 
 //			MOVE.C				//
 void	move_front(t_cub *s);
 void	move_back(t_cub *s);
 void	move_right(t_cub *s);
 void	move_left(t_cub *s);
-//			MOVE.C				//
 
 //			MOVE_CAM.C			//
 void	move_cam_right(t_cub *s);
 void	move_cam_left(t_cub *s);
-//			MOVE_CAM.C			//
 
 //			KEY_GESTION.C		//
 int		red_cross(t_cub *s);
 int		key_release(int key, t_cub *s);
 void	check_move(t_cub *s);
 int		key_press(int key, t_cub *s);
-//			KEY_GESTION.C		//
-
 
 //			INIT.C				//
 void	init_raycast_value(t_cub *s);
 void	initialize_dir_and_cam(t_cub *s);
 void	init_raycast_mlx(t_cub *s);
-//			INIT.C				//
 
 //			WINDOW.C			//
 void	size_screen(t_cub *s);
 void	window(t_cub *s);
-//			WINDOW.C			//
 
 //			RAYCAST.C			//
 int		raycast(t_cub *s);
@@ -257,7 +244,6 @@ void	sky_floor_raycast(t_cub *s);
 void	hit_raycast(t_cub *s);
 void	step_raycast(t_cub *s);
 void	init_raycast(t_cub *s);
-//			RAYCAST.C			//
 
 //			TEXTURE.C			//
 void	init_texture_NO(t_cub *s);
@@ -265,23 +251,18 @@ void	init_texture_SO(t_cub *s);
 void	init_texture_WE(t_cub *s);
 void	init_texture_EA(t_cub *s);
 void	init_texture(t_cub *s);
-//			TEXTURE.C			//
 
 //			DRAW.C				//
 void	draw_raycast(t_cub *s);
 void	draw_wall(t_cub *s);
 void	check_wall_pos(t_cub *s);
-//			DRAW.C				//
 
 //			SPRITE_INIT.C		//
-
-void    init_variable_sprite(t_cub *s);
-void    get_position_sprite(t_cub *s);
+void	init_variable_sprite(t_cub *s);
+void	get_position_sprite(t_cub *s);
 void	init_texture_sprite(t_cub *s);
 void	sprite_dist(t_cub *s);
 void	sprite_order(t_cub *s);
-
-//			SPRITE_INIT.C		//
 
 //			SPRITE				//
 void	sprite_calcul(t_cub *s, int i);
@@ -289,7 +270,5 @@ void	sprite_calcul_2(t_cub *s);
 void	sprite_aff(t_cub *s);
 void	sprite_aff_2(t_cub *s);
 void	sprite(t_cub *s);
-//			SPRITE				//
-
 
 #endif
